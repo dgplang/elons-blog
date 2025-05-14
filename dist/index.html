@@ -7,191 +7,110 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/style.css">
 </head>
-<body class="m-0 p-0 box-border">
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <!-- Logo -->
-          <div class="logo">
-    <a href="#Logo">
-    <img src="/dist/media/logo.jpeg" alt="Logo Image"
-      class="w-30 h-20 logo-tint">
-    </a>
+<body>
+    <div class="text-gray-700 text-5xl">Project Begins</div>
+    <h1 class="text-center text-4xl mt-6 font-bold text-black">My Cards</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 py-10 max-w-7xl mx-auto">
+      
+      <div class="bg-[#0c4cba]  rounded-xl overflow-hidden shadow-lg group">
+        <h2 class="text-xl md:text-2xl font-bold text-white p-4">Innovate. Create. Inspire.</h2>
+  
+        <div class="relative">
+          <img
+            src="pexels-photo-31915217.webp"
+            alt="Image sample"
+            class="w-full h-60 object-cover"
+          />
+  
+          <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
+            <i class='bx bx-heart'></i>
+            <i class='bx bx-share'></i>
+            <i class='bx bx-bookmark'></i>
+          </div>
+        </div>
+  
+        <div class="p-4 text-lg text-white">
+          <span class="block font-semibold">By Jane Doe</span>
+          <span class="block">Technical Writer</span>
+          <span class="block">May 14, 2025</span>
+        </div>
+      </div>
+  
+  
+      <div class="bg-[#0c4cba]   rounded-xl overflow-hidden shadow-lg group">
+          <h2 class="text-xl md:text-2xl font-bold text-white p-4">Innovate. Create. Inspire.</h2>
+    
+          <div class="relative">
+            <img
+              src="pexels-photo-31915217.webp"
+              alt="Image sample"
+              class="w-full h-60 object-cover"
+            />
+    
+            <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
+              <i class='bx bx-heart'></i>
+              <i class='bx bx-share'></i>
+              <i class='bx bx-bookmark'></i>
+            </div>
+          </div>
+    
+          <div class="p-4 text-lg text-white">
+            <span class="block font-semibold">By Jane Doe</span>
+            <span class="block">Technical Writer</span>
+            <span class="block">May 14, 2025</span>
+          </div>
+        </div>
+    
+        <div class="bg-[#0c4cba]   rounded-xl overflow-hidden shadow-lg group">
+          <h2 class="text-xl md:text-2xl font-bold text-white p-4">Innovate. Create. Inspire.</h2>
+    
+          <div class="relative">
+            <img
+              src="pexels-photo-31915217.webp"
+              alt="Image sample"
+              class="w-full h-60 object-cover"
+            />
+    
+            <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
+              <i class='bx bx-heart'></i>
+              <i class='bx bx-share'></i>
+              <i class='bx bx-bookmark'></i>
+            </div>
+          </div>
+    
+          <div class="p-4 text-lg text-white">
+            <span class="block font-semibold">By Jane Doe</span>
+            <span class="block">Technical Writer</span>
+            <span class="block">May 14, 2025</span>
+          </div>
+        </div>
+    
+  
+        <div class="bg-[#0c4cba]   rounded-xl overflow-hidden shadow-lg group">
+          <h2 class="text-xl md:text-2xl font-bold text-white p-4">Innovate. Create. Inspire.</h2>
+    
+          <div class="relative">
+            <img
+              src="pexels-photo-31915217.webp"
+              alt="Image sample"
+              class="w-full h-60 object-cover"
+            />
+    
+            <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
+              <i class='bx bx-heart'></i>
+              <i class='bx bx-share'></i>
+              <i class='bx bx-bookmark'></i>
+            </div>
+          </div>
+    
+          <div class="p-4 text-lg text-white">
+            <span class="block font-semibold">By Jane Doe</span>
+            <span class="block">Technical Writer</span>
+            <span class="block">May 14, 2025</span>
+          </div>
+        </div>
     </div>
-
-            <!-- Hamburger Icon -->
-            <button id="menu" class="md:hidden text-gray-700 focus:outline-none w-6 h-6">
-                <i class='bx bx-menu block text-2xl'></i>
-                <i class='bx bx-x hidden text-2xl'></i>
-            </button>
-
-            <!-- Desktop Menu -->
-            <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
-                <li><a href="#Home" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Home</a></li>
-                <li><a href="#Blog" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Blog</a></li>
-                <li><a href="#Services" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Services</a></li>
-                <li><a href="#Contact" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Contact</a></li>
-
-            </ul>
-
-            <div id="myBtn" class="hidden md:flex space-x-4">
-                <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
-                <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get Started</button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Container -->
-        <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col">
-            <ul class="space-y-2">
-                <li><a href="#Home" class="text-[#0c4c8a] hover:text-[#1f3750]">Home</a></li>
-                <li><a href="#Blog" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Blog</a></li>
-                <li><a href="#Services" class="text-[#0c4c8a] hover:text-[#1f3750]">Services</a></li>
-                <li><a href="#Contact" class="text-[#0c4c8a] hover:text-[#1f3750]">Contact</a></li>
-            </ul>
-            <div class="pt-4 space-y-2">
-                <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
-                <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get
-                    Started</button>
-            </div>
-        </div>
-    </nav>
-    <main>
-        <div class="flex flex-col items-center">
-            <div class="flex items-start justify-between mx-20 my-0 px-0 py-5">
-              <div class="flex flex-col p-0 m-0 w-3/4">
-                  <div class="w-full text-4xl font-normal pb-5">Title is the shortest introduction to a blog article</div>
-                  <div class="w-full overflow-hidden">
-                      <img src="/dist/media/blog-picture-full.png" alt="Sample Image" class="w-full h-96 object-cover">
-                      <div class="px-0 py-4 text-center">
-                        <p class="text-sm leading-tight text-gray-800 text-center">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
-                      </div>
-                    </div>
-                  <div class="w-full text-xl text-justify leading-relaxed">
-                      <p class="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                      <p class="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                      <p class="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                      <p class="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                      <p class="pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                  </div>
-
-
-                  <div class="w-full mx-auto mt-5 p-4 sm:p-6 bg-[#194585] rounded-lg shadow-lg">
-                    <!-- Comment Form -->
-                    <div class="mb-6">
-                      <h2 class="text-xl sm:text-2xl font-semibold text-white mb-4">Leave a Comment</h2>
-                      <form class="space-y-4">
-                        <div>
-                          <label for="name" class="block text-sm font-medium text-white">Name</label>
-                          <input
-                            type="text"
-                            id="name"
-                            class="mt-1 w-full p-3 rounded-md border border-[#194585] bg-white text-white focus:ring-[#89d7de] focus:border-[#89d7de] text-sm sm:text-base"
-                            placeholder="Your Name"
-                            required
-                          >
-                        </div>
-                        <div>
-                          <label for="comment" class="block text-sm font-medium text-white">Comment</label>
-                          <textarea
-                            id="comment"
-                            rows="4"
-                            class="mt-1 w-full p-3 rounded-md border border-[#194585] bg-white text-[#26355b] focus:ring-[#89d7de] focus:border-[#89d7de] text-sm sm:text-base"
-                            placeholder="Write your comment here..."
-                            required
-                          ></textarea>
-                        </div>
-                        <button
-                          type="submit"
-                          class="w-full sm:w-auto px-6 py-2 bg-[#64fcfd] text-[#194585] rounded-md hover:bg-[#26355b] hover:text-white transition-colors text-sm sm:text-base"
-                        >
-                          Post Comment
-                        </button>
-                      </form>
-                    </div>
-                  
-                    <!-- Comment List -->
-                    <div>
-                      <h2 class="text-xl sm:text-2xl font-semibold text-[#194585] mb-4">Comments</h2>
-                      <div class="space-y-4">
-                        <!-- Single Comment -->
-                        <div class="p-4 bg-white rounded-md shadow-sm">
-                          <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-sm sm:text-base font-medium text-[#26355b]">Jane Doe</h3>
-                            <span class="text-xs sm:text-sm text-gray-500">May 14, 2025, 11:00 AM</span>
-                          </div>
-                          <p class="text-sm sm:text-base text-[#26355b] text-justify leading-tight">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          </p>
-                        </div>
-                        <!-- Single Comment -->
-                        <div class="p-4 bg-white rounded-md shadow-sm">
-                          <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-sm sm:text-base font-medium text-[#26355b]">John Smith</h3>
-                            <span class="text-xs sm:text-sm text-gray-500">May 14, 2025, 10:30 AM</span>
-                          </div>
-                          <p class="text-sm sm:text-base text-[#26355b] text-justify leading-tight">
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="w-1/4">
-                  <div class="pb-1 pl-4 pt-2 w-full text-2xl font-normal">Related posts</div>
-                  <div class="pl-4">
-                      <!-- Posts Container -->
-                      <div class="flex flex-col">
-                        <!-- Single Post -->
-                        <div class="w-full leading-relaxed hover:underline flex items-center">
-                          <a href="" target="_self" class="flex items-center">
-                              <img src="/dist/media/thumb-pic.jpg" alt="Post thumbnail" class="w-16 h-16 object-cover">
-                              <div class="p-3 flex-1">
-                              <h3 class="text-base font-semibold text-gray-800 line-clamp-3">This is a longer post title that spans multiple lines but fits within the available width</h3>
-                              </div>
-                          </a>
-                        </div>
-                        <!-- Single Post -->
-                        <div class="w-full leading-relaxed hover:underline flex items-center">
-                          <a href="" target="_self" class="flex items-center">
-                              <img src="/dist/media/thumb-pic.jpg" alt="Post thumbnail" class="w-16 h-16 object-cover">
-                              <div class="p-3 flex-1">
-                              <h3 class="text-base font-semibold text-gray-800 line-clamp-3">Another extended title demonstrating how it wraps neatly without overflowing</h3>
-                              </div>
-                          </a>
-                        </div>
-                        <!-- Single Post -->
-                        <div class="w-full leading-relaxed hover:underline flex items-center">
-                          <a href="" target="_self" class="flex items-center">
-                              <img src="/dist/media/thumb-pic.jpg" alt="Post thumbnail" class="w-16 h-16 object-cover">
-                              <div class="p-3 flex-1">
-                              <h3 class="text-base font-semibold text-gray-800 line-clamp-3">A third lengthy title that still fits comfortably in the provided space</h3>
-                              </div>
-                          </a>
-                        </div>
-                        <!-- Single Post -->
-                        <div class="w-full leading-relaxed hover:underline flex items-center">
-                          <a href="" target="_self" class="flex items-center">
-                              <img src="/dist/media/thumb-pic.jpg" alt="Post thumbnail" class="w-16 h-16 object-cover">
-                              <div class="p-3 flex-1">
-                              <h3 class="text-base font-semibold text-gray-800 line-clamp-3">A fourth lengthy title that still fits comfortably in the provided space</h3>
-                              </div>
-                          </a>
-                        </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-
-
-        
-    </main>
+  
 </body>
 </html>
