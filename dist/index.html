@@ -5,96 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elons Blog Project</title>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/dist/style.css">
 </head>
 <body>
-<!-- Navigation -->
-<nav class="fixed top-0 left-0 w-full bg-[#f7f7f7] shadow-md z-50">
-  <div class="container mx-auto px-5 md:px-20 py-3 flex items-center justify-between">
-    <!-- Logo -->
-    <div class="logo">
-      <a href="index.html">
-        <img src="/media/logo.jpeg" alt="Logo Image" class="scale-50 md:scale-75 logo-tint">
-      </a>
-    </div>
-
-    <!-- Hamburger Icon -->
-    <button id="menu" class="md:hidden text-gray-700 focus:outline-none w-6 h-6">
-      <i class='bx bx-menu block text-2xl'></i>
-      <i class='bx bx-x hidden text-2xl'></i>
-    </button>
-
-    <!-- Desktop Menu -->
-    <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
-      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Home</a></li>
-      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Blog</a></li>
-      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Services</a></li>
-      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Contact</a></li>
-    </ul>
-
-    <div id="myBtn" class="hidden md:flex space-x-4">
-      <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
-      <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get Started</button>
-    </div>
-  </div>
-
-  <!-- Mobile Menu Container -->
-  <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col bg-[#f7f7f7] fixed top-16 left-0 w-full z-50 shadow-md">
-    <ul class="space-y-2">
-      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Home</a></li>
-      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline block py-2">Blog</a></li>
-      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Services</a></li>
-      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Contact</a></li>
-    </ul>
-    <div class="pt-4 space-y-2">
-      <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
-      <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get Started</button>
-    </div>
-  </div>
-</nav>
-
-<!-- Main Content with Padding -->
-<main class="pt-16 md:pt-20">
-  <!-- Your page content, e.g., blog cards -->
-</main>
-    <div class="px-5 md:px-20">
-      <h1 class="text-center text-3xl md:text-4xl mt-6 font-bold text-[#0c4c8a]">Elons Blog</h1>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-10 max-w-7xl mx-auto">
-  
-        <a href="ai1.html" class="block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300">
-        <div class="bg-[#0c4c8a] rounded-xl overflow-hidden shadow-lg group">
-          <h2 class="text-xl md:text-2xl font-bold text-white p-4">General introduction to A.I.</h2>
-    
-          <div class="relative">
-            <img
-              src="/media/ai-intro.jpg"
-              alt="Image sample"
-              class="w-full h-60 object-cover"
-            />
-    
-            <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
-              <i class='bx bx-heart'></i>
-              <i class='bx bx-share'></i>
-              <i class='bx bx-bookmark'></i>
-            </div>
-          </div>
-    
-          <div class="p-4 text-lg text-white">
-            <span class="block font-semibold">By Elons Team</span>
-            <span class="block">Technical Writers</span>
-            <span class="block">May 14, 2025</span>
-          </div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-[#f7f7f7] shadow-md z-50">
+      <div class="container mx-auto px-5 md:px-20 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="logo">
+          <a href="index.html">
+            <img src="/media/logo.jpeg" alt="Logo Image" class="scale-50 md:scale-75 logo-tint">
+          </a>
         </div>
+
+        <!-- Hamburger Icon -->
+        <button id="menu" class="md:hidden text-gray-700 focus:outline-none w-6 h-6">
+          <i class='bx bx-menu block text-2xl'></i>
+          <i class='bx bx-x hidden text-2xl'></i>
+        </button>
+
+        <!-- Desktop Menu -->
+        <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
+          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Home</a></li>
+          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Blog</a></li>
+          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Services</a></li>
+          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Contact</a></li>
+        </ul>
+
+        <div id="myBtn" class="hidden md:flex space-x-4">
+          <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
+          <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get Started</button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Container -->
+      <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col bg-[#f7f7f7] fixed top-16 left-0 w-full z-50 shadow-md">
+        <ul class="space-y-2">
+          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Home</a></li>
+          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline block py-2">Blog</a></li>
+          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Services</a></li>
+          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Contact</a></li>
+        </ul>
+        <div class="pt-4 space-y-2">
+          <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
+          <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get Started</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content with Padding -->
+    <main class="pt-16 md:pt-20">
+    <!-- Main or hero Section -->
+    <section class="flex flex-col lg:flex-row justify-between items-center gap-6 md:gap-8 lg:gap-16 px-4 sm:px-5 md:px-20 lg:px-24 py-10 md:py-16 bg-gray-200 pr-10 md:pr-10 lg:pr-32">
+      <div class="ml-20 max-w w-full lg:w-1/2 text-center lg:text-left">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold -tracking-normal text-gray-900 mb-4 md:mb-6 leading-normal">
+          "The people who are crazy enough to think they can change the world are the ones who do."
+        </h2>
+        <p class="mt-2 text-lg text-[#0c4c8a]">— Steve Jobs</p>
+        <a href="index.html"
+          class="mt-6 inline-block px-6 py-3 bg-[#0c4c8a] hover:bg-[#1f3750] text-white font-medium rounded-md transition-colors duration-300">
+          Explore the Future
         </a>
-    
-        <a href="smart1.html" class="block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300">
-        <div class="bg-[#0c4c8a] rounded-xl overflow-hidden shadow-lg group">
-            <h2 class="text-xl md:text-2xl font-bold text-white p-4">Smart Homes: The Future of Living</h2>
+      </div>
+      <div class="w-full lg:w-1/2 mt-6 lg:mt-0 pl-20">
+        <img src="https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Car dashboard with speedometer"
+          class="w-full max-w-[500px] sm:max-w-[600px] max-h-[300px] rounded-lg shadow-md">
+      </div>
+    </section>
+      <div class="px-5 md:px-20">
+        <h1 class="text-center text-3xl md:text-4xl mt-6 font-bold text-[#0c4c8a]">Elons Team Blog</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-10 max-w-7xl mx-auto">
+
+          <a href="ai1.html" class="block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300">
+          <div class="bg-[#0c4c8a] rounded-xl overflow-hidden shadow-lg group">
+            <h2 class="text-xl md:text-2xl font-bold text-white p-4">General introduction to A.I.</h2>
       
             <div class="relative">
               <img
-                src="/media/smart-homes.jpeg"
+                src="/media/ai-intro.jpg"
                 alt="Image sample"
                 class="w-full h-60 object-cover"
               />
@@ -113,60 +103,88 @@
             </div>
           </div>
           </a>
-  
-          <a href="smart2.html" class="block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300">
-            <div class="bg-[#0c4c8a]   rounded-xl overflow-hidden shadow-lg group">
-            <h2 class="text-xl md:text-2xl font-bold text-white p-4">Smart Wearables: Technology on the Go</h2>
       
-            <div class="relative">
-              <img
-                src="/media/smart-wearables.jpeg"
-                alt="Image sample"
-                class="w-full h-60 object-cover"
-              />
-      
-              <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
-                <i class='bx bx-heart'></i>
-                <i class='bx bx-share'></i>
-                <i class='bx bx-bookmark'></i>
+          <a href="smart1.html" class="block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300">
+          <div class="bg-[#0c4c8a] rounded-xl overflow-hidden shadow-lg group">
+              <h2 class="text-xl md:text-2xl font-bold text-white p-4">Smart Homes: The Future of Living</h2>
+        
+              <div class="relative">
+                <img
+                  src="/media/smart-homes.jpeg"
+                  alt="Image sample"
+                  class="w-full h-60 object-cover"
+                />
+        
+                <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
+                  <i class='bx bx-heart'></i>
+                  <i class='bx bx-share'></i>
+                  <i class='bx bx-bookmark'></i>
+                </div>
+              </div>
+        
+              <div class="p-4 text-lg text-white">
+                <span class="block font-semibold">By Elons Team</span>
+                <span class="block">Technical Writers</span>
+                <span class="block">May 14, 2025</span>
               </div>
             </div>
-      
-            <div class="p-4 text-lg text-white">
-              <span class="block font-semibold">By Elons Team</span>
-              <span class="block">Technical Writers</span>
-              <span class="block">May 14, 2025</span>
-            </div>
-          </div>
-          </a>    
-    
-          <a href="ai2.html" class="block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300">
-            <div class="bg-[#0c4c8a]   rounded-xl overflow-hidden shadow-lg group">
-            <h2 class="text-xl md:text-2xl font-bold text-white p-4">Artificial Intelligence in Healthcare</h2>
-      
-            <div class="relative">
-              <img
-                src="/media/ai-healthcare.jpeg"
-                alt="Image sample"
-                class="w-full h-60 object-cover"
-              />
-      
-              <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
-                <i class='bx bx-heart'></i>
-                <i class='bx bx-share'></i>
-                <i class='bx bx-bookmark'></i>
+            </a>
+
+            <a href="smart2.html" class="block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300">
+              <div class="bg-[#0c4c8a]   rounded-xl overflow-hidden shadow-lg group">
+              <h2 class="text-xl md:text-2xl font-bold text-white p-4">Smart Wearables: Technology on the Go</h2>
+        
+              <div class="relative">
+                <img
+                  src="/media/smart-wearables.jpeg"
+                  alt="Image sample"
+                  class="w-full h-60 object-cover"
+                />
+        
+                <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
+                  <i class='bx bx-heart'></i>
+                  <i class='bx bx-share'></i>
+                  <i class='bx bx-bookmark'></i>
+                </div>
+              </div>
+        
+              <div class="p-4 text-lg text-white">
+                <span class="block font-semibold">By Elons Team</span>
+                <span class="block">Technical Writers</span>
+                <span class="block">May 14, 2025</span>
               </div>
             </div>
+            </a>    
       
-            <div class="p-4 text-lg text-white">
-              <span class="block font-semibold">By Elons Team</span>
-              <span class="block">Technical Writers</span>
-              <span class="block">May 14, 2025</span>
+            <a href="ai2.html" class="block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300">
+              <div class="bg-[#0c4c8a]   rounded-xl overflow-hidden shadow-lg group">
+              <h2 class="text-xl md:text-2xl font-bold text-white p-4">Artificial Intelligence in Healthcare</h2>
+        
+              <div class="relative">
+                <img
+                  src="/media/ai-healthcare.jpeg"
+                  alt="Image sample"
+                  class="w-full h-60 object-cover"
+                />
+        
+                <div class="absolute inset-0 hidden group-hover:flex items-end justify-center pb-6 gap-4 text-white text-2xl bg-black bg-opacity-40 transition">
+                  <i class='bx bx-heart'></i>
+                  <i class='bx bx-share'></i>
+                  <i class='bx bx-bookmark'></i>
+                </div>
+              </div>
+        
+              <div class="p-4 text-lg text-white">
+                <span class="block font-semibold">By Elons Team</span>
+                <span class="block">Technical Writers</span>
+                <span class="block">May 14, 2025</span>
+              </div>
             </div>
-          </div>
-          </a>
-      </div>  
-    </div>
+            </a>
+        </div>  
+      </div>
+    </main>
+
     <!-- footer  -->
     <footer class="bg-[#0c4c8a] hover:bg-[#1f3750]">
       <div class="text-white text-center">
