@@ -8,55 +8,57 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-      <nav class="bg-[#f7f7f7] shadow-md">
-        <div class="container mx-auto px-20 py-3 flex items-center justify-between">
-            <!-- Logo -->
-            <div class="logo">
-                <a href="index.html">
-                <img src="/media/logo.jpeg" alt="Logo Image"
-                class="w-30 h-20 logo-tint">
-                </a>
-            </div>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full bg-[#f7f7f7] shadow-md z-50">
+  <div class="container mx-auto px-5 md:px-20 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="index.html">
+        <img src="/media/logo.jpeg" alt="Logo Image" class="scale-50 md:scale-75 logo-tint">
+      </a>
+    </div>
 
-            <!-- Hamburger Icon -->
-            <button id="menu" class="md:hidden text-gray-700 focus:outline-none w-6 h-6">
-                <i class='bx bx-menu block text-2xl'></i>
-                <i class='bx bx-x hidden text-2xl'></i>
-            </button>
+    <!-- Hamburger Icon -->
+    <button id="menu" class="md:hidden text-gray-700 focus:outline-none w-6 h-6">
+      <i class='bx bx-menu block text-2xl'></i>
+      <i class='bx bx-x hidden text-2xl'></i>
+    </button>
 
-            <!-- Desktop Menu -->
-            <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
-                <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Home</a></li>
-                <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Blog</a></li>
-                <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Services</a></li>
-                <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Contact</a></li>
+    <!-- Desktop Menu -->
+    <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
+      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Home</a></li>
+      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Blog</a></li>
+      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Services</a></li>
+      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Contact</a></li>
+    </ul>
 
-            </ul>
+    <div id="myBtn" class="hidden md:flex space-x-4">
+      <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
+      <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get Started</button>
+    </div>
+  </div>
 
-            <div id="myBtn" class="hidden md:flex space-x-4">
-                <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
-                <button class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get Started</button>
-            </div>
-        </div>
+  <!-- Mobile Menu Container -->
+  <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col bg-[#f7f7f7] fixed top-16 left-0 w-full z-50 shadow-md">
+    <ul class="space-y-2">
+      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Home</a></li>
+      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline block py-2">Blog</a></li>
+      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Services</a></li>
+      <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Contact</a></li>
+    </ul>
+    <div class="pt-4 space-y-2">
+      <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
+      <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get Started</button>
+    </div>
+  </div>
+</nav>
 
-        <!-- Mobile Menu Container -->
-        <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col">
-            <ul class="space-y-2">
-                <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750]">Home</a></li>
-                <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Blog</a></li>
-                <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750]">Services</a></li>
-                <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750]">Contact</a></li>
-            </ul>
-            <div class="pt-4 space-y-2">
-                <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
-                <button class="w-full px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Get
-                    Started</button>
-            </div>
-        </div>
-    </nav>
-
+<!-- Main Content with Padding -->
+<main class="pt-16 md:pt-20">
+  <!-- Your page content, e.g., blog cards -->
+</main>
     <div class="px-5 md:px-20">
-      <h1 class="text-center text-4xl mt-6 font-bold text-[#0c4c8a]">Elons Blog</h1>
+      <h1 class="text-center text-3xl md:text-4xl mt-6 font-bold text-[#0c4c8a]">Elons Blog</h1>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-10 max-w-7xl mx-auto">
   
@@ -79,8 +81,8 @@
           </div>
     
           <div class="p-4 text-lg text-white">
-            <span class="block font-semibold">By Jane Doe</span>
-            <span class="block">Technical Writer</span>
+            <span class="block font-semibold">By Elons Team</span>
+            <span class="block">Technical Writers</span>
             <span class="block">May 14, 2025</span>
           </div>
         </div>
@@ -105,8 +107,8 @@
             </div>
       
             <div class="p-4 text-lg text-white">
-              <span class="block font-semibold">By Jane Doe</span>
-              <span class="block">Technical Writer</span>
+              <span class="block font-semibold">By Elons Team</span>
+              <span class="block">Technical Writers</span>
               <span class="block">May 14, 2025</span>
             </div>
           </div>
@@ -131,8 +133,8 @@
             </div>
       
             <div class="p-4 text-lg text-white">
-              <span class="block font-semibold">By Jane Doe</span>
-              <span class="block">Technical Writer</span>
+              <span class="block font-semibold">By Elons Team</span>
+              <span class="block">Technical Writers</span>
               <span class="block">May 14, 2025</span>
             </div>
           </div>
@@ -157,8 +159,8 @@
             </div>
       
             <div class="p-4 text-lg text-white">
-              <span class="block font-semibold">By Jane Doe</span>
-              <span class="block">Technical Writer</span>
+              <span class="block font-semibold">By Elons Team</span>
+              <span class="block">Technical Writers</span>
               <span class="block">May 14, 2025</span>
             </div>
           </div>
