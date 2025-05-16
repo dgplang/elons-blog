@@ -7,3 +7,5 @@ document.getElementById("menu").addEventListener("click", function () {
     menuIcon.classList.toggle("hidden");
     closeIcon.classList.toggle("hidden");
 })
+
+ 

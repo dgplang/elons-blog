@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+    <title>Registration Form</title>
+</head>
+<body class="bg-gradient-to-b from-[#0c4c8a] to-[#1f3750] first-letter:py-8 flex justify-center items-center min-h-screen">
+    <div class="bg-white rounded-md px-6 py-6 w-full max-w-md sm:max-w-lg">
+        <h1 class="text-center font-bold text-3xl mb-2">Registration Form</h1>
+        <p class="text-center text-gray-400 mb-6">Fill out the form carefully for registration</p>
+        <form id="registrationForm" action="/submit" method="POST">
+
+            <!-- general error -->
+            <p id="general-error" class="text-red-500 hidden">Please fill all field</p>
+            
+            <!-- Fullname -->
+            <label for="fullName" class="font-bold block mb-1">Participant Name</label>
+            <div class="flex flex-col sm:flex-row gap-5 mb-4">
+                <div class="flex-1">
+                    <input id="fullName" name="firstName" class="border px-2 py-1 rounded-md w-full" type="text"
+                        placeholder="Fullname" required>
+                    <span id="fullName-error" class="text-red-500 text-sm hidden"></span>
+                </div>
+            </div>
+
+            <!--Email -->
+            <label for="email" class="font-bold block mb-1">Email</label>
+            <div class="mb-4">
+                <input id="email" name="email" class="border px-2 py-1 rounded-md w-full" type="email"
+                    placeholder="Your email.." required>
+                <span id="email-error" class="text-red-500 text-sm hidden"></span>
+            </div>
+
+            <!-- Password -->
+            <label for="password" class="font-bold block mb-1">Password</label>
+            <div class="mb-4">
+                <div class="flex gap-2">
+                    <input id="password1" name="password" class="border px-2 py-1 rounded-md w-full" type="password" placeholder="Enter password.." required minlength="8" aria-describedby="password-hint">
+                    <svg class="mt-2" id="svgicon1" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+                </div>  
+                <p id="password-hint" class="text-gray-400 text-sm">Must be at least 7 (and above) characters</p>
+                <span id="password-error" class="text-red-500 text-sm hidden"></span>
+            </div>
+
+            <!-- confirmPassword -->
+             <label for="ConfirmPassword" class="font-bold block mb-1">Password</label>
+            <div class="mb-4">
+                  <div class="flex gap-2">
+                    <input id="password2" name="password" class="border px-2 py-1 rounded-md w-full" type="password" placeholder="Enter password.." required minlength="8" aria-describedby="password-hint">
+                    <svg class="mt-2" id="svgicon2" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+                </div>
+                <p id="password-hint" class="text-gray-400 text-sm">Must be at least 7 (and above) characters</p>
+                <span id="password-error" class="text-red-500 text-sm hidden"></span>
+            </div>
+
+            <!-- teamName -->
+            <label for="teamName" class="font-bold block mb-1">Participant Team</label>
+            <div class="flex flex-col sm:flex-row gap-5 mb-4">
+                <div class="flex-1">
+                    <select id="teamName" name="teamName" class="border px-2 py-1 rounded-md w-full" required>
+                        <option value="" disabled selected>Select a team</option>
+                        <option value="404">404</option>
+                        <option value="Pull Request">Pull Request</option>
+                        <option value="Elon">Elon</option>
+                        <option value="Phoenix">Phoenix</option>
+                        <option value="Titians">Titains</option>
+                    </select>
+                    <span id="teamName-error" class="text-red-500 text-sm hidden"></span>
+                </div>
+            </div>
+    
+            <!-- submit -->
+            <div class="flex justify-center py-4">
+                <button id="mybutton" type="submit" class="px-5 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let password1 = document.getElementById("password1")
+        let password2 = document.getElementById("password2")
+
+        let passwordIcon1 = document.querySelector("#svgicon1") // Use .svgicons to target the class
+        let passwordIcon2 = document.querySelector("#svgicon2") // Use .svgicons to target the class
+
+        passwordIcon1.addEventListener("click", () => {
+            if (password1.type === "password") {
+                password1.type = "text"
+            } else {
+                password1.type = "password"
+            }
+        })
+
+        passwordIcon2.addEventListener("click", () => {
+            if (password2.type === "password") {
+                password2.type = "text"
+            } else {
+                password2.type = "password"
+            }
+        })
+    </script>
+</body>
+</html>
