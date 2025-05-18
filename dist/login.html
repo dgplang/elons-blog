@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="style.css">
-   <title>Login | Elon Team's Blog</title>
+    <title>Login Form</title>
 </head>
 <body class="bg-gradient-to-b from-[#0c4c8a] to-[#1f3750] first-letter:py-8 flex justify-center items-center min-h-screen">
+    <a href="index.html" class="absolute top-6 left-6">
+        <svg class="" xmlns="http://www.w3.org/2000/svg" height="34px" viewBox="0 -960 960 960" width="34px" fill="white"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+    </a>
     <div class="bg-white rounded-md px-6 py-6 w-full max-w-md sm:max-w-lg">
         <h1 class="text-center font-bold text-3xl mb-2">Login Form</h1>
         <p class="text-center text-gray-400 mb-6">Fill out the form carefully for Login</p>
-        <form id="LoginForm" action="/submit" method="POST">
+        <form id="LoginForm" action="" method="POST">
 
             <!-- general error -->
             <p id="general-error" class="text-red-500 hidden">Please fill all field</p>
@@ -18,7 +21,7 @@
             <!--Email -->
             <label for="email" class="font-bold block mb-1">Email</label>
             <div class="mb-4">
-                <input id="email" name="email" class="border px-2 py-1 rounded-md w-full" type="email"
+                <input id="email" name="email" class="border px-2 py-1 rounded-md w-full h-12 focus:outline-none focus:ring focus:ring-blue-500" type="email"
                     placeholder="Your email.." required>
                 <span id="email-error" class="text-red-500 text-sm hidden"></span>
             </div>
@@ -27,25 +30,25 @@
             <label for="password" class="font-bold block mb-1">Password</label>
             <div class="mb-4">
                 <div class="flex gap-2">
-                    <input id="password" name="password" class="border px-2 py-1 rounded-md w-full" type="password" placeholder="Enter password.." required minlength="8" aria-describedby="password-hint">
-                    <svg class="mt-2" id="svgicon" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
+                    <input id="password" name="password" class="border px-2 py-1 rounded-md w-full h-12 focus:outline-none focus:ring focus:ring-blue-500" type="password" placeholder="Enter password.." required minlength="8" aria-describedby="password-hint">
+                    <svg class="mt-2" id="svgicons" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
                 </div>  
-                <p id="password-hint" class="text-gray-400 text-sm">Must be at least 7 (and above) characters</p>
+                <p id="password-hint" class="text-gray-400 text-sm">Must be at least 7 above characters.</p>
                 <span id="password-error" class="text-red-500 text-sm hidden"></span>
             </div>
 
             <!-- submit -->
             <div class="flex justify-center py-4">
-                <button id="mybutton" type="submit" class="px-5 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
+                <button id="mybutton" class="px-5 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
             </div>
         </form>
+        <div class="mt-4 text-xl text-center text-green-700" id="responseMessage">You should maintain the same device you used to register for all your logins. Else you may choose to re-register with different email address. Thank you.</div>
     </div>
 
     <script>
         let password = document.getElementById("password")
 
-        let passwordIcon = document.querySelector("#svgicon")
-
+        let passwordIcon = document.querySelector("#svgicons");
         passwordIcon.addEventListener("click", () => {
             if (password.type === "password") {
                 password.type = "text";
@@ -53,5 +56,48 @@
                 password.type = "password";
             }
         });
+
+        let LoginForm = document.getElementById("LoginForm")
+
+        LoginForm.addEventListener("submit", (e) => {
+            e.preventDefault()
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const responseMessage = document.getElementById('responseMessage');
+
+            // Input validation
+            if (!email || !password) {
+                loginMessage.textContent = 'Please fill in all fields';
+                return;
+            }
+
+            // Retrieve user data from localStorage
+            const userData = localStorage.getItem(email);
+            if (!userData) {
+                responseMessage.textContent = 'User not found. Please register first.';
+                responseMessage.style.color = 'red';
+                return;
+            }
+
+            // Parse stored data and verify credentials
+            const user = JSON.parse(userData);
+            if (user.password === password) {
+                user.isLog = true
+                localStorage.setItem(user.email, JSON.stringify(user));
+                localStorage.setItem("loggedInEmail", email);
+                responseMessage.textContent = `Login successful! Welcome, ${user.name}`;
+                responseMessage.style.color = 'green';
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 20000);
+            } else {
+                responseMessage.textContent = 'Incorrect password';
+                responseMessage.style.color = 'red';
+            }
+
+            // Clear form
+            document.getElementById("LoginForm").reset();
+        })
     </script>
 </body>
