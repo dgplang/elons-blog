@@ -73,7 +73,7 @@ window.addEventListener("load", () => {
   
           // Step 5: Redirect after a short delay
           setTimeout(() => {
-            window.location.href = "login.html";
+            window.location.href = "index.html";
           }, 2000); // 2 seconds
         }
       }

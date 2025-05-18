@@ -33,7 +33,7 @@
                     <input id="password" name="password" class="border px-2 py-1 rounded-md w-full h-12 focus:outline-none focus:ring focus:ring-blue-500" type="password" placeholder="Enter password.." required minlength="8" aria-describedby="password-hint">
                     <svg class="mt-2" id="svgicons" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/></svg>
                 </div>  
-                <p id="password-hint" class="text-gray-400 text-sm">Must be at least 7 above characters.</p>
+                <p id="password-hint" class="text-gray-400 text-sm">Must be at least 7 (and above) characters.</p>
                 <span id="password-error" class="text-red-500 text-sm hidden"></span>
             </div>
 
@@ -42,7 +42,7 @@
                 <button id="mybutton" class="px-5 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md">Login</button>
             </div>
         </form>
-        <div class="mt-4 text-xl text-center text-green-700" id="responseMessage">You should maintain the same device you used to register for all your logins. Else you may choose to re-register with different email address. Thank you.</div>
+        <div class="mt-4 text-xl text-center text-green-700" id="responseMessage"></div>
     </div>
 
     <script>
@@ -57,47 +57,82 @@
             }
         });
 
-        let LoginForm = document.getElementById("LoginForm")
+        const LoginForm = document.getElementById("LoginForm");
 
         LoginForm.addEventListener("submit", (e) => {
-            e.preventDefault()
+            e.preventDefault();
 
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value.trim();
             const responseMessage = document.getElementById('responseMessage');
 
-            // Input validation
+            // Basic validation
             if (!email || !password) {
-                loginMessage.textContent = 'Please fill in all fields';
+                responseMessage.textContent = "Please fill in all fields.";
+                responseMessage.style.color = "red";
                 return;
             }
 
-            // Retrieve user data from localStorage
-            const userData = localStorage.getItem(email);
-            if (!userData) {
-                responseMessage.textContent = 'User not found. Please register first.';
-                responseMessage.style.color = 'red';
-                return;
-            }
+            fetch("https://test.blockfuselabs.com/api/login", {
+                method: "POST",
+                headers: {
+                    "Accept": "*/*",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                })
+            })
+            .then(response => {
+                const contentType = response.headers.get("content-type");
 
-            // Parse stored data and verify credentials
-            const user = JSON.parse(userData);
-            if (user.password === password) {
-                user.isLog = true
-                localStorage.setItem(user.email, JSON.stringify(user));
-                localStorage.setItem("loggedInEmail", email);
-                responseMessage.textContent = `Login successful! Welcome, ${user.name}`;
-                responseMessage.style.color = 'green';
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 20000);
-            } else {
-                responseMessage.textContent = 'Incorrect password';
-                responseMessage.style.color = 'red';
-            }
+                return response.text().then(text => {
+                    if (response.status === 401) {
+                        // Invalid credentials
+                        responseMessage.textContent = "❌ Invalid credentials";
+                        responseMessage.style.color = "red";
+                        return;
+                    }
 
-            // Clear form
-            document.getElementById("LoginForm").reset();
-        })
+                    if (!response.ok) {
+                        throw new Error(`❌ Error ${response.status}: ${text}`);
+                    }
+
+                    if (contentType && contentType.includes("application/json")) {
+                        const data = JSON.parse(text);
+
+                        // Save user to localStorage
+                        const username = data.user.email;
+                        data.user.password = password;
+                        data.user.isLog = true; // mark user as logged in
+
+                        localStorage.setItem(username, JSON.stringify({
+                            ...data.user,
+                            token: data.token
+                        }));
+
+                        localStorage.setItem("loggedInEmail", email);
+
+                        responseMessage.textContent = `✅ ${data.user.name}, login successful!`;
+                        responseMessage.style.color = "green";
+
+                        // Optional: redirect after a few seconds
+                        setTimeout(() => {
+                            window.location.href = "index.html";
+                        }, 2000);
+                    } else {
+                        responseMessage.textContent = `Unexpected response format: ${contentType}`;
+                        responseMessage.style.color = "red";
+                        console.warn("Unexpected response body:", text);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Fetch Error:", error.message);
+                responseMessage.textContent = `❌ Error: ${error.message}`;
+                responseMessage.style.color = "red";
+            });
+        });
     </script>
 </body>
