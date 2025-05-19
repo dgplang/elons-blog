@@ -96,19 +96,61 @@
       })
       .then(response => {
         if (response.status === 201) {
-          responseMessage.textContent = "✅ Post created successfully!";
-          responseMessage.style.color = "green";
-          postForm.reset();
+          return response.json(); // ✅ Get the created post data
         } else {
           return response.text().then(text => {
             throw new Error(`❌ Error ${response.status}: ${text}`);
           });
         }
       })
+      .then(createdPost => {
+        console.log("✅ Post created successfully:");
+        console.log(createdPost);
+
+        // ✅ Save to localStorage
+        localStorage.setItem(`Post_${createdPost.id}`, JSON.stringify(createdPost));
+
+        // Optional: Update UI
+        responseMessage.textContent = "✅ Post created and saved locally!";
+        responseMessage.style.color = "green";
+        postForm.reset();
+      })
       .catch(error => {
         responseMessage.textContent = error.message;
         responseMessage.style.color = "red";
       });
+
+
+      // const user = JSON.parse(userData);
+      // const token = user.token;
+
+      // fetch("https://test.blockfuselabs.com/api/posts", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Authorization": `Bearer ${token}`,
+      //   },
+      //   body: JSON.stringify({
+      //     title: title,
+      //     content: content,
+      //     category_id: parseInt(categoryId)
+      //   })
+      // })
+      // .then(response => {
+      //   if (response.status === 201) {
+      //     responseMessage.textContent = "✅ Post created successfully!";
+      //     responseMessage.style.color = "green";
+      //     postForm.reset();
+      //   } else {
+      //     return response.text().then(text => {
+      //       throw new Error(`❌ Error ${response.status}: ${text}`);
+      //     });
+      //   }
+      // })
+      // .catch(error => {
+      //   responseMessage.textContent = error.message;
+      //   responseMessage.style.color = "red";
+      // });
     });
   </script>
 </body>
