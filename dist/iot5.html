@@ -78,20 +78,20 @@
                         <div>
                           <label for="comment" class="block text-sm font-medium text-white">Comment</label>
                           <textarea
-                            id="comment"
-                            rows="4"
+                            id="commentInput"                            rows="4"
                             class="mt-1 w-full p-3 rounded-md border border-[#194585] bg-white text-[#26355b] focus:ring-[#89d7de] focus:border-[#89d7de] text-sm sm:text-base"
                             placeholder="Write your comment here..."
                             required
                           ></textarea>
                         </div>
-                        <button
+                        <button id="postCommentBtn"
                           type="submit"
                           class="w-full sm:w-auto px-6 py-2 bg-[#64fcfd] text-[#26355b] rounded-md hover:bg-[#26355b] hover:text-white transition-colors text-sm sm:text-base"
                         >
                           Post Comment
                         </button>
                       </form>
+                      <p id="commentResponse"></p>
                     </div>
                   
                     <!-- Comment List -->
@@ -99,6 +99,7 @@
                       <h2 class="text-xl sm:text-2xl font-semibold text-white mb-4">Comments</h2>
                       <div id="commentsContainer" class="space-y-4">
                     </div>
+                  </div>
                   </div>
               </div>
               <div class="w-full md:w-1/4">
