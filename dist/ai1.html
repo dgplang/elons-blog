@@ -14,7 +14,7 @@
         <!-- Logo -->
         <div class="logo">
           <a href="index.html">
-            <img src="media/logo.jpeg" alt="Logo Image" class="w-1/6 md:w-1/4 logo-tint">
+            <img src="media/logo.jpeg" alt="Elon Team Blog" class="w-1/6 md:w-1/4 logo-tint">
           </a>
         </div>
 
@@ -36,6 +36,7 @@
           <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Login</a>
           <a href="registration.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Get Started</a>
           <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user">Logout</a>
+        </div>
     </div>
       </div>
 
@@ -58,84 +59,47 @@
       <div class="flex flex-col items-center">
         <div class="flex flex-col md:flex-row items-center md:items-start justify-between my-6 md:my-0 mx-5 md:mx-20">
           <div class="flex flex-col p-0 m-0 w-full md:w-3/4">
-            <div class="w-full text-2xl md:text-3xl font-semibold text-gray-700 pb-5">General introduction to Artificial Intelligence (A.I.)</div>
+            <div class="w-full text-2xl md:text-3xl font-semibold text-gray-700 pb-5" id="blogtitle"></div>
                   <div class="w-full overflow-hidden">
-                      <img src="media/ai-intro.jpg" alt="Smart Homes" class="w-full h-96 object-cover">
+                      <img src="media/ai-intro.jpg" alt="Smart Homes" class="w-full h-60 md:h-96 object-cover">
                       <div class="px-0 py-4 text-center">
                         <p class="text-lg font-semibold leading-tight text-gray-800 text-center">
                           Artificial Intelligence
                         </p>
                       </div>
                     </div>
-                  <div class="w-full xs:text-sm sm:text-base md:text-lg text-justify leading-relaxed">
-
-                      <p class="pt-3">Artificial Intelligence (AI), the ability of a digital computer or computer-controlled robot to perform tasks commonly associated with intelligent beings. The term is frequently applied to the project of developing systems endowed with the intellectual processes characteristic of humans, such as the ability to reason, discover meaning, generalize, or learn from past experience.</p>
-
-                      <p class="pt-3">Since their development in the 1940s, digital computers have been programmed to carry out very complex tasks—such as discovering proofs for mathematical theorems or playing chess—with great proficiency. Despite continuing advances in computer processing speed and memory capacity, there are as yet no programs that can match full human flexibility over wider domains or in tasks requiring much everyday knowledge.</p>
-
-                      <p class="pt-3">On the other hand, some programs have attained the performance levels of human experts and professionals in executing certain specific tasks, so that artificial intelligence in this limited sense is found in applications as diverse as medical diagnosis, computer search engines, voice or handwriting recognition, and chatbots.</p>
-
+                  <div class="w-full xs:text-sm sm:text-base md:text-lg text-justify leading-relaxed" id="blogpost">
                   </div>
 
                   <div class="w-full mx-auto my-6 p-4 sm:p-6 bg-[#0c4c8a] rounded-lg shadow-lg">
                     <!-- Comment Form -->
                     <div class="mb-6">
                       <h2 class="text-xl sm:text-2xl font-semibold text-white mb-4">Leave a Comment</h2>
-                      <form class="space-y-4">
-                        <div>
-                          <label for="name" class="block text-sm font-medium text-white">Name</label>
-                          <input
-                            type="text"
-                            id="name"
-                            class="mt-1 w-full p-3 rounded-md border border-[#194585] bg-white text-white focus:ring-[#89d7de] focus:border-[#89d7de] text-sm sm:text-base"
-                            placeholder="Your Name"
-                            required
-                          >
-                        </div>
+                      <form id="commentForm" class="space-y-4">
                         <div>
                           <label for="comment" class="block text-sm font-medium text-white">Comment</label>
                           <textarea
-                            id="comment"
-                            rows="4"
+                          id="commentInput"
+                            rows="4" name="comment"
                             class="mt-1 w-full p-3 rounded-md border border-[#194585] bg-white text-[#26355b] focus:ring-[#89d7de] focus:border-[#89d7de] text-sm sm:text-base"
                             placeholder="Write your comment here..."
                             required
                           ></textarea>
                         </div>
-                        <button
+                        <button id="postCommentBtn"
                           type="submit"
                           class="w-full sm:w-auto px-6 py-2 bg-[#64fcfd] text-[#26355b] rounded-md hover:bg-[#26355b] hover:text-white transition-colors text-sm sm:text-base"
                         >
                           Post Comment
                         </button>
                       </form>
+                      <p id="commentResponse"></p>
                     </div>
                   
                     <!-- Comment List -->
                     <div>
                       <h2 class="text-xl sm:text-2xl font-semibold text-white mb-4">Comments</h2>
-                      <div class="space-y-4">
-                        <!-- Single Comment -->
-                        <div class="p-4 bg-white rounded-md shadow-sm">
-                          <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-sm sm:text-base font-medium text-[#26355b]">Jane Doe</h3>
-                            <span class="text-xs sm:text-sm text-gray-500">May 14, 2025, 11:00 AM</span>
-                          </div>
-                          <p class="text-sm sm:text-base text-[#26355b] text-justify leading-tight">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          </p>
-                        </div>
-                        <!-- Single Comment -->
-                        <div class="p-4 bg-white rounded-md shadow-sm">
-                          <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-sm sm:text-base font-medium text-[#26355b]">John Smith</h3>
-                            <span class="text-xs sm:text-sm text-gray-500">May 14, 2025, 10:30 AM</span>
-                          </div>
-                          <p class="text-sm sm:text-base text-[#26355b] text-justify leading-tight">
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                          </p>
-                        </div>
-                      </div>
+                      <div id="commentsContainer" class="space-y-4">
                     </div>
                   </div>
               </div>
@@ -211,6 +175,143 @@
             <p><a href="https://github.com/dgplang/elons-blog-project" target="_blank" class="hover:underline text-white">GitHub Link</a> </p>
         </div>
     </footer>
+    <script>
+      const getPostDetails = () => {
+        fetch("https://test.blockfuselabs.com/api/posts/34", {
+          method: "GET",
+          headers: {
+            "Accept": "*/*"
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("✅ Post details fetched:", data);
+    
+          // Populate the DOM
+          document.getElementById("blogtitle").textContent = data.title;
+          document.getElementById("blogpost").innerHTML = data.content;
+        })
+        .catch(error => {
+          console.error("❌ Error fetching post details:", error.message);
+        });
+      };
+    
+      // Call it on page load
+      window.onload = getPostDetails;
+
+      // Ensure the event is attached after the DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        const commentInput = document.getElementById("commentInput");
+        const responseMessage = document.getElementById("commentResponse");
+        const postButton = document.getElementById("postCommentBtn");
+
+        postButton.addEventListener("click", (event) => {
+          event.preventDefault(); // ⛔ Prevent page reload if inside a form
+
+          const userData = localStorage.getItem('loggedInEmail');
+          if (!userData) {
+            responseMessage.textContent = "❌ User not logged in.";
+            responseMessage.style.color = "red";
+            return;
+          }
+
+          const user = JSON.parse(localStorage.getItem(userData));
+          if (!user || !user.email) {
+            responseMessage.textContent = "❌ User session is invalid or expired.";
+            responseMessage.style.color = "red";
+            return;
+          }
+
+          const token = user.token;
+          const commentContent = commentInput.value.trim();
+
+          if (!commentContent) {
+            responseMessage.textContent = "❌ Please enter a comment.";
+            responseMessage.style.color = "red";
+            return;
+          }
+
+          const commentData = {
+            content: commentContent
+          };
+
+          console.log("📤 Sending comment:", commentData);
+
+          fetch("https://test.blockfuselabs.com/api/posts/34/comments", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "*/*",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(commentData)
+          })
+          .then(response => {
+            console.log("📩 Raw response received:", response);
+            if (response.status === 201) {
+              return response.json(); // Expect JSON if created
+            } else {
+              return response.text().then(text => {
+                throw new Error(`❌ Error ${response.status}: ${text}`);
+              });
+            }
+          })
+          .then(data => {
+            console.log("✅ Comment posted successfully:", data);
+            responseMessage.textContent = "✅ Your comment was posted successfully!";
+            responseMessage.style.color = "white";
+            commentInput.value = ""; // Clear input
+          })
+          .catch(error => {
+            console.error("❌ Error during fetch:", error.message);
+            responseMessage.textContent = error.message;
+            responseMessage.style.color = "red";
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+      const commentsContainer = document.getElementById("commentsContainer");
+
+      fetch("https://test.blockfuselabs.com/api/posts/65/comments", {
+        method: "GET",
+        headers: {
+          Accept: "*/*",
+        },
+      })
+        .then(response => response.json())
+        .then(comments => {
+          comments.forEach(comment => {
+            const commentBlock = document.createElement("div");
+            commentBlock.className = "p-4 bg-white rounded-md shadow-sm";
+
+            const time = new Date(comment.created_at).toLocaleString("en-US", {
+              dateStyle: "medium",
+              timeStyle: "short",
+            });
+
+            commentBlock.innerHTML = `
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-sm sm:text-base font-medium text-[#26355b]">${comment.user.name}</h3>
+                <span class="text-xs sm:text-sm text-gray-500">${time}</span>
+              </div>
+              <p class="text-sm sm:text-base text-[#26355b] text-justify leading-tight">${comment.content}</p>
+            `;
+
+            commentsContainer.appendChild(commentBlock);
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching comments:", error);
+          commentsContainer.innerHTML = "<p class='text-red-500'>Failed to load comments.</p>";
+        });
+      });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
