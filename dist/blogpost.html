@@ -31,6 +31,13 @@
       <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</button>
       <p id="responseMessage" class="text-sm font-medium"></p>
     </form>
+    <div id="postList" class="mt-6">
+      <h3 class="text-lg font-semibold text-gray-700 mb-2">Your Posts</h3>
+      <div id="postsContainer" class="space-y-4">
+
+      </div>
+
+    </div>
   </main>
 
   <script>
@@ -104,6 +111,11 @@
         }
       })
       .then(createdPost => {
+
+        let div=document.createElement("div");
+        div.innerHTML=`<h1 class="font-bold text-2xl">${createdPost.title}</h1>
+        <p>${createdPost.content}</p>`
+        document.getElementById("postsContainer").appendChild(div);
         console.log("✅ Post created successfully:");
         console.log(createdPost);
 
