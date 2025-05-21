@@ -12,21 +12,19 @@
   <nav class="bg-white shadow p-4 flex justify-between items-center md:flex-row flex-col">
     <h1 class="text-2xl font-bold text-blue-600 mb-2 md:mb-0">Elon Team's Blog</h1>
     <div class="flex flex-wrap gap-2 justify-center">
-      <button class="bg-blue-500 text-white rounded-full px-4 py-2 hover:bg-blue-600">Unused</button>
-      <button class="bg-green-500 text-white rounded-full px-4 py-2 hover:bg-green-600">Unused</button>
-      <button class="bg-purple-500 text-white rounded-full px-4 py-2 hover:bg-purple-600">Unused</button>
-      <button class="bg-yellow-500 text-white rounded-full px-4 py-2 hover:bg-yellow-600">Unused</button>
-      <button class="bg-pink-500 text-white rounded-full px-4 py-2 hover:bg-pink-600">Unsued</button>
-      <button id="logoutBtn" class="bg-red-500 text-white rounded-full px-4 py-2 hover:bg-red-600">Logout</button>
+        <a href="index.html" class="bg-yellow-500 text-white rounded-full px-4 py-2 hover:bg-yellow-600">Home</a>
+        <a href="blog.html" class="bg-pink-500 text-white rounded-full px-4 py-2 hover:bg-pink-600">Blog</a>
+        <button class="bg-blue-500 text-white rounded-full px-4 py-2 hover:bg-blue-600">Unused</button>
+        <button class="bg-green-500 text-white rounded-full px-4 py-2 hover:bg-green-600">Unused</button>
+        <button class="bg-purple-500 text-white rounded-full px-4 py-2 hover:bg-purple-600">Unused</button>
+        <button id="logoutBtn" class="bg-red-500 text-white rounded-full px-4 py-2 hover:bg-red-600">Logout</button>
     </div>
   </nav>
-
-<!-- Modal for updating post -->
-<main>
+  <main>
     <!-- Blog Post Update Section -->
     <h2 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Update Blog Post</h2>
     <form id="updateForm" class="bg-white shadow-md rounded p-6 space-y-4">
-    <input id="updateId" type="hidden" />
+    <input id="updateId" type="number" placeholder="Updated Post ID" class="w-full border px-4 py-2 rounded" required />
     <input id="updateTitle" type="text" placeholder="Updated Title" class="w-full border px-4 py-2 rounded" required />
     <textarea id="updateContent" placeholder="Updated Content" class="w-full border px-4 py-2 rounded" rows="6" required></textarea>
     <input id="updateCategoryId" type="number" placeholder="Updated Category ID" class="w-full border px-4 py-2 rounded" required />
@@ -34,9 +32,164 @@
     <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Submit Update</button>
     <p id="updateResponseMessage" class="text-sm font-medium"></p>
     </form>
-</main>
-
+    <section class="p-6">
+        <h2 class="text-xl font-bold mb-4">All Blog Posts</h2>
+      
+        <!-- Filter and Export Controls -->
+        <div class="mb-4 flex flex-wrap justify-between items-center gap-4">
+          <input
+            type="text"
+            id="filterInput"
+            placeholder="Filter by Title..."
+            class="border px-4 py-2 rounded shadow-sm w-full md:w-1/3"
+          />
+          <button
+            onclick="exportToCSV()"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Export to CSV
+          </button>
+        </div>
+      
+        <!-- Posts Table -->
+        <table class="w-full table-auto border-collapse border border-gray-300" id="allPostsTable">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="border px-4 py-2">S/N</th>
+              <th class="border px-4 py-2">Post ID</th>
+              <th class="border px-4 py-2">Title</th>
+              <th class="border px-4 py-2">Content</th>
+              <th class="border px-4 py-2">Author/User ID</th>
+              <th class="border px-4 py-2">Last Updated</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      
+        <!-- Pagination Controls -->
+        <div class="mt-4 flex justify-center gap-2" id="paginationControls"></div>
+    </section>      
+    <section class="p-6">
+        <h2 class="text-xl font-bold mb-4">All Blog Posts</h2>
+        <table class="w-full table-auto border-collapse border border-gray-300" id="allPostsTable">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="border px-4 py-2">S/N</th>
+              <th class="border px-4 py-2">Post ID</th>
+              <th class="border px-4 py-2">Title</th>
+              <th class="border px-4 py-2">Content</th>
+              <th class="border px-4 py-2">Author/User ID</th>
+              <th class="border px-4 py-2">Last Updated</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>      
+  </main>
 <script>
+    const rowsPerPage = 5;
+    let currentPage = 1;
+    let filteredPosts = [];
+
+    function getFormattedPosts() {
+        const posts = [];
+
+        for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+
+        if (key.startsWith("Post_")) {
+            const post = JSON.parse(localStorage.getItem(key));
+
+            const formattedDate = new Date(post.updated_at).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+            });
+
+            posts.push({
+            id: post.id,
+            title: post.title,
+            content: post.content,
+            user_id: post.user_id,
+            updated: formattedDate
+            });
+        }
+        }
+
+        return posts;
+    }
+
+    function displayStoredPosts() {
+        const tableBody = document.querySelector("#allPostsTable tbody");
+        tableBody.innerHTML = "";
+
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const endIndex = startIndex + rowsPerPage;
+        const postsToDisplay = filteredPosts.slice(startIndex, endIndex);
+
+        postsToDisplay.forEach((post, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td class="border px-4 py-2 text-center">${startIndex + index + 1}</td>
+            <td class="border px-4 py-2">${post.id}</td>
+            <td class="border px-4 py-2">${post.title}</td>
+            <td class="border px-4 py-2">${post.content}</td>
+            <td class="border px-4 py-2">${post.user_id}</td>
+            <td class="border px-4 py-2">${post.updated}</td>
+        `;
+        tableBody.appendChild(row);
+        });
+
+        renderPaginationControls();
+    }
+
+    function renderPaginationControls() {
+        const paginationContainer = document.getElementById("paginationControls");
+        paginationContainer.innerHTML = "";
+
+        const totalPages = Math.ceil(filteredPosts.length / rowsPerPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        btn.className = `px-3 py-1 border rounded ${i === currentPage ? "bg-blue-600 text-white" : "bg-white text-blue-600"}`;
+        btn.onclick = () => {
+            currentPage = i;
+            displayStoredPosts();
+        };
+        paginationContainer.appendChild(btn);
+        }
+    }
+
+    function filterPosts() {
+        const query = document.getElementById("filterInput").value.toLowerCase();
+        filteredPosts = getFormattedPosts().filter(post =>
+        post.title.toLowerCase().includes(query)
+        );
+        currentPage = 1;
+        displayStoredPosts();
+    }
+
+    document.getElementById("filterInput").addEventListener("input", filterPosts);
+
+    function exportToCSV() {
+        let csv = "S/N,Post ID,Title,Content,User ID,Last Updated\n";
+        filteredPosts.forEach((post, index) => {
+        csv += `"${index + 1}","${post.id}","${post.title.replace(/"/g, '""')}","${post.content.replace(/"/g, '""')}","${post.user_id}","${post.updated}"\n`;
+        });
+
+        const blob = new Blob([csv], { type: "text/csv" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "blog_posts.csv";
+        link.click();
+    }
+
+    window.onload = () => {
+        filteredPosts = getFormattedPosts();
+        displayStoredPosts();
+    };
+
     const updateForm = document.getElementById("updateForm");
     const updateResponseMessage = document.getElementById("updateResponseMessage");
 
@@ -108,7 +261,7 @@
         updateResponseMessage.style.color = "green";
 
         // Optionally refresh the posts table
-        displayStoredPosts();
+        //displayStoredPosts();
 
         updateForm.reset();
         })
@@ -117,6 +270,57 @@
         updateResponseMessage.style.color = "red";
         });
     });
+
+    function displayStoredPosts() {
+        const tableBody = document.querySelector("#allPostsTable tbody");
+        tableBody.innerHTML = ""; // Clear previous rows
+
+        let serial = 1;
+
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+
+            if (key.startsWith("Post_")) {
+            const post = JSON.parse(localStorage.getItem(key));
+
+            // Format the updated_at date (e.g., "2025-05-20T13:22:00Z" => "May 20, 2025")
+            const updatedDate = new Date(post.updated_at);
+            const formattedDate = updatedDate.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            });
+
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td class="border px-4 py-2 text-center">${serial++}</td>
+                <td class="border px-4 py-2">${post.id}</td>
+                <td class="border px-4 py-2">${post.title}</td>
+                <td class="border px-4 py-2">${post.content}</td>
+                <td class="border px-4 py-2">${post.user_id}</td>
+                <td class="border px-4 py-2">${formattedDate}</td>
+            `;
+
+            tableBody.appendChild(row);
+            }
+        }
+    }
+
+    function deletePost(postId) {
+        const key = `Post_${postId}`;
+        if (localStorage.getItem(key)) {
+            if (confirm("Are you sure you want to delete this post?")) {
+            localStorage.removeItem(key);
+            displayStoredPosts(); // Refresh the table
+            }
+        } else {
+            alert("Post not found.");
+        }
+    }
+
+    window.onload = () => {
+        displayStoredPosts();
+    };
 </script>
 </body>
 </html>

@@ -46,7 +46,7 @@ window.addEventListener("load", () => {
         }
       }
 
-7    // Fallback: hide user buttons and show non-user buttons
+7   // Fallback: hide user buttons and show non-user buttons
     const nonuserBtns = document.getElementsByClassName("nonuser");
     const userBtns = document.getElementsByClassName("user");
     const members = document.getElementsByClassName("member");
