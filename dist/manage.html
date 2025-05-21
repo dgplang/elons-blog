@@ -72,6 +72,7 @@
         formData.append("featured_image", image);
     }
 
+    const loggedInEmail = localStorage.getItem("loggedInEmail");
     const userData = localStorage.getItem(loggedInEmail);
     if (!userData) {
         updateResponseMessage.textContent = "❌ User data not found.";
