@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elon Team's Blog</title>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+  <!-- Mobile Responsive Navigation -->
+  <nav class="bg-white shadow p-4 flex justify-between items-center md:flex-row flex-col">
+    <h1 class="text-2xl font-bold text-blue-600 mb-2 md:mb-0">Elon Team's Blog</h1>
+    <div class="flex flex-wrap gap-2 justify-center">
+      <button class="bg-blue-500 text-white rounded-full px-4 py-2 hover:bg-blue-600">Unused</button>
+      <button class="bg-green-500 text-white rounded-full px-4 py-2 hover:bg-green-600">Unused</button>
+      <button class="bg-purple-500 text-white rounded-full px-4 py-2 hover:bg-purple-600">Unused</button>
+      <button class="bg-yellow-500 text-white rounded-full px-4 py-2 hover:bg-yellow-600">Unused</button>
+      <button class="bg-pink-500 text-white rounded-full px-4 py-2 hover:bg-pink-600">Unsued</button>
+      <button id="logoutBtn" class="bg-red-500 text-white rounded-full px-4 py-2 hover:bg-red-600">Logout</button>
+    </div>
+  </nav>
+
+<!-- Modal for updating post -->
+<main>
+    <!-- Blog Post Update Section -->
+    <h2 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Update Blog Post</h2>
+    <form id="updateForm" class="bg-white shadow-md rounded p-6 space-y-4">
+    <input id="updateId" type="hidden" />
+    <input id="updateTitle" type="text" placeholder="Updated Title" class="w-full border px-4 py-2 rounded" required />
+    <textarea id="updateContent" placeholder="Updated Content" class="w-full border px-4 py-2 rounded" rows="6" required></textarea>
+    <input id="updateCategoryId" type="number" placeholder="Updated Category ID" class="w-full border px-4 py-2 rounded" required />
+    <input id="updateImage" type="file" class="w-full border px-4 py-2 rounded" accept="image/*" />
+    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Submit Update</button>
+    <p id="updateResponseMessage" class="text-sm font-medium"></p>
+    </form>
+</main>
+
+<script>
+    const updateForm = document.getElementById("updateForm");
+    const updateResponseMessage = document.getElementById("updateResponseMessage");
+
+    // Populate update form when "Update" button is clicked
+    function updatePost(postId) {
+    const postData = JSON.parse(localStorage.getItem(`Post_${postId}`));
+    if (!postData) {
+        alert("Post not found in localStorage.");
+        return;
+    }
+
+    document.getElementById("updateId").value = postData.id;
+    document.getElementById("updateTitle").value = postData.title;
+    document.getElementById("updateContent").value = postData.content;
+    document.getElementById("updateCategoryId").value = postData.category_id;
+    }
+
+    // Submit updated data to API
+    updateForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const postId = document.getElementById("updateId").value;
+    const title = document.getElementById("updateTitle").value.trim();
+    const content = document.getElementById("updateContent").value.trim();
+    const categoryId = document.getElementById("updateCategoryId").value.trim();
+    const image = document.getElementById("updateImage").files[0];
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("category_id", parseInt(categoryId));
+    if (image) {
+        formData.append("featured_image", image);
+    }
+
+    const userData = localStorage.getItem(loggedInEmail);
+    if (!userData) {
+        updateResponseMessage.textContent = "❌ User data not found.";
+        updateResponseMessage.style.color = "red";
+        return;
+    }
+
+    const user = JSON.parse(userData);
+    const token = user.token;
+
+    fetch(`https://test.blockfuselabs.com/api/posts/${postId}`, {
+        method: "PATCH",
+        headers: {
+        Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+    })
+        .then((response) => {
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            return response.text().then((text) => {
+            throw new Error(`❌ Error ${response.status}: ${text}`);
+            });
+        }
+        })
+        .then((updatedPost) => {
+        // ✅ Save to localStorage
+        localStorage.setItem(`Post_${updatedPost.id}`, JSON.stringify(updatedPost));
+
+        // ✅ Update UI
+        updateResponseMessage.textContent = "✅ Post updated successfully!";
+        updateResponseMessage.style.color = "green";
+
+        // Optionally refresh the posts table
+        displayStoredPosts();
+
+        updateForm.reset();
+        })
+        .catch((error) => {
+        updateResponseMessage.textContent = error.message;
+        updateResponseMessage.style.color = "red";
+        });
+    });
+</script>
+</body>
+</html>
