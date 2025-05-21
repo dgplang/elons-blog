@@ -109,10 +109,10 @@
                       Categories
                   </h2>
                   <select name="category" id="category_id" class="mt-2 w-full text-gray-800 font-semibold block border-1 border-gray-600 rounded-md px-4 py-2 mb-3">
-                      <option value="" selected class="hover:bg-[#0c4c8a] hover:text-white transition-colors">Choose</option>
+                      <!-- <option value="" selected class="hover:bg-[#0c4c8a] hover:text-white transition-colors">Choose</option>
                       <option value="1" class="hover:bg-[#1cafce] hover:text-white transition-colors">Artificial Intelligence</option>
                       <option value="2" class="hover:bg-[#1cafce] hover:text-white transition-colors">Internet of Things</option>
-                      <option value="3" class="hover:bg-[#1cafce] hover:text-white transition-colors">Smart Technologies</option>
+                      <option value="3" class="hover:bg-[#1cafce] hover:text-white transition-colors">Smart Technologies</option> -->
                   </select>
                   <div class="flex justify-center items-center">
                   <button class="px-6 py-2 mb-4 text-center font-semibold text-white bg-[#0c4c8a] rounded-md">Category</button>
@@ -330,6 +330,42 @@
 
       document.addEventListener("DOMContentLoaded", function () {
         loadComments();
+      });
+
+      //select category
+      let select = document.querySelector("select");
+      let categories = document.getElementById("category_id");
+      categories.addEventListener("click", (e) => {
+        e.preventDefault();
+        let selected = select.value;
+        fetch("https://test.blockfuselabs.com/api/categories", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            let categories = result.data;
+            select.innerHTML = "";
+
+            let defaultOption = document.createElement("option");
+            defaultOption.textContent = "Choose";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            select.appendChild(defaultOption);
+            categories.forEach((category) => {
+              let option = document.createElement("option");
+              option.value = category.id;
+              option.className = "hover:bg-blue-800 hover:text-white";
+              option.innerText = `
+              ${category.name}`;
+              if (category.id == selected) {
+                option.selected = true;
+              }
+              select.appendChild(option);
+            });
+          });
       });
     </script>
     <script src="script.js"></script>
