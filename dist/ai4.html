@@ -24,36 +24,36 @@
           <i class='bx bx-x hidden text-2xl'></i>
         </button>
 
-        <!-- Desktop Menu -->
-        <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
-          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Home</a></li>
-          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Blog</a></li>
-          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Services</a></li>
-          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline">Contact</a></li>
-        </ul>
+            <!-- Desktop Menu -->
+            <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
+              <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]">Home</a></li>
+              <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]">Blog</a></li>
+              <li><a href="blogpost.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a] member">Manage Blog</a></li>
+              <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]">Contact</a></li>
+          </ul>
 
-        <div id="myBtn" class="hidden md:flex space-x-4">
-          <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Login</a>
-          <a href="registration.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Get Started</a>
-          <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user">Logout</a>
-        </div>
+          <div id="myBtn" class="hidden md:flex space-x-4">
+            <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Login</a>
+            <a href="registration.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Get Started</a>
+            <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user">Logout</a>
+          </div>
       </div>
 
       <!-- Mobile Menu Container -->
-      <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col bg-[#f7f7f7] fixed top-16 left-0 w-full z-50 shadow-md">
-        <ul class="space-y-2">
-          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Home</a></li>
-          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:underline block py-2">Blog</a></li>
-          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Services</a></li>
-          <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750] block py-2">Contact</a></li>
-        </ul>
-        <div class="pt-4 space-y-2">
-          <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Login</a>
-          <a href="registration.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Get Started</a>
-          <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user">Logout</a>
-        </div>
+      <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col">
+          <ul class="space-y-2">
+              <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750]">Home</a></li>
+              <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750]">Blog</a></li>
+              <li><a href="blogpost.html" class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a] member">Manage Blog</a></li>
+              <li><a href="index.html" class="text-[#0c4c8a] hover:text-[#1f3750]">Contact</a></li>
+          </ul>
+          <div class="pt-4 space-y-2">
+            <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Login</a>
+            <a href="registration.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser">Get Started</a>
+            <a href="login.html" class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user">Logout</a>
+          </div>
       </div>
-    </nav>
+  </nav>
     <main class="pt-20 md:pt-24">
       <div class="flex flex-col items-center">
         <div class="flex flex-col md:flex-row items-center md:items-start justify-between my-6 md:my-0 mx-5 md:mx-20">
@@ -262,10 +262,20 @@
             }
           })
           .then(data => {
-            console.log("✅ Comment posted successfully:", data);
-            responseMessage.textContent = "✅ Your comment was posted successfully!";
-            responseMessage.style.color = "white";
-            commentInput.value = ""; // Clear input
+              commentInput.value = ""; // Clear input
+              loadComments();          // Reload comments
+          });
+
+          commentBlock.innerHTML = `
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-sm sm:text-base font-medium text-[#26355b]">${data.user.name}</h3>
+              <span class="text-xs sm:text-sm text-gray-500">${time}</span>
+            </div>
+            <p class="text-sm sm:text-base text-[#26355b] text-justify leading-tight">${data.content}</p>
+          `;
+
+            const commentsContainer = document.getElementById("commentsContainer");
+            commentsContainer.prepend(commentBlock); // Insert at top
           })
           .catch(error => {
             console.error("❌ Error during fetch:", error.message);
@@ -273,22 +283,22 @@
             responseMessage.style.color = "red";
           });
         });
-      });
 
-      document.addEventListener("DOMContentLoaded", function () {
-      const commentsContainer = document.getElementById("commentsContainer");
+      function loadComments() {
+        const commentsContainer = document.getElementById("commentsContainer");
+        commentsContainer.innerHTML = ""; // Clear existing comments
 
-      fetch("https://test.blockfuselabs.com/api/posts/77/comments", {
-        method: "GET",
-        headers: {
-          Accept: "*/*",
-        },
-      })
+        fetch("https://test.blockfuselabs.com/api/posts/77/comments", {
+          method: "GET",
+          headers: {
+            Accept: "*/*",
+          },
+        })
         .then(response => response.json())
         .then(comments => {
           comments.forEach(comment => {
             const commentBlock = document.createElement("div");
-            commentBlock.className = "p-4 bg-white rounded-md shadow-sm";
+            commentBlock.className = "p-4 bg-white rounded-md shadow-sm animate-comment";
 
             const time = new Date(comment.created_at).toLocaleString("en-US", {
               dateStyle: "medium",
@@ -310,6 +320,10 @@
           console.error("Error fetching comments:", error);
           commentsContainer.innerHTML = "<p class='text-red-500'>Failed to load comments.</p>";
         });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadComments();
       });
     </script>
     <script src="script.js"></script>

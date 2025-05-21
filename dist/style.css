@@ -616,10 +616,6 @@ video {
   top: 0px;
 }
 
-.top-16 {
-  top: 4rem;
-}
-
 .top-6 {
   top: 1.5rem;
 }
@@ -700,6 +696,10 @@ video {
 
 .inline-block {
   display: inline-block;
+}
+
+.inline {
+  display: inline;
 }
 
 .flex {
@@ -1157,11 +1157,6 @@ video {
   color: rgb(12 76 138 / var(--tw-text-opacity, 1));
 }
 
-.text-\[\#194585\] {
-  --tw-text-opacity: 1;
-  color: rgb(25 69 133 / var(--tw-text-opacity, 1));
-}
-
 .text-\[\#26355b\] {
   --tw-text-opacity: 1;
   color: rgb(38 53 91 / var(--tw-text-opacity, 1));
@@ -1468,10 +1463,6 @@ video {
 
   .md\:items-start {
     align-items: flex-start;
-  }
-
-  .md\:gap-6 {
-    gap: 1.5rem;
   }
 
   .md\:px-12 {

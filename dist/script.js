@@ -15,33 +15,50 @@ window.addEventListener("load", () => {
       const userData = localStorage.getItem(email); // fetch user object using the email
       if (userData) {
         const user = JSON.parse(userData); // parse the user object
-  
+
+        const nonuserBtns = document.getElementsByClassName("nonuser");
+        const userBtns = document.getElementsByClassName("user");
+        const members = document.getElementsByClassName("member")
+
         if (user.isLog === true) {
-          const nonuserBtns = document.getElementsByClassName("nonuser");
-          const userBtns = document.getElementsByClassName("user");
-  
-          for (let btn of nonuserBtns) {
-            btn.style.display = "none";
+            for (let btn of nonuserBtns) {
+              btn.style.display = "none";
+            }
+            for (let btn of userBtns) {
+              btn.style.display = "block";
+            }
+            for (let navLink of members) {
+              navLink.style.display = "inline"
+            }
+            return; // skip the rest
+          } else {
+            for (let btn of nonuserBtns) {
+              btn.style.display = "block";
+            }
+            for (let btn of userBtns) {
+              btn.style.display = "none";
+            }
+            for (let navLink of members) {
+              navLink.style.display = "none"
+            }
+            return; // skip the rest
           }
-          for (let btn of userBtns) {
-            btn.style.display = "block";
-          }
-          return; // skip the rest
-        } else {
-            alert("Register to have limitless access to our blog and more");
         }
       }
-    }
 
-    // Fallback: hide user buttons and show non-user buttons
+7    // Fallback: hide user buttons and show non-user buttons
     const nonuserBtns = document.getElementsByClassName("nonuser");
     const userBtns = document.getElementsByClassName("user");
+    const members = document.getElementsByClassName("member");
   
     for (let btn of nonuserBtns) {
       btn.style.display = "block";
     }
     for (let btn of userBtns) {
       btn.style.display = "none";
+    }
+    for (navLink of members) {
+      navLink.style.display = "none"
     }
   
   });
