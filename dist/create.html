@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Blog Post - Elon Team's Blog</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="m-0 p-0 box-border bg-gray-100 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-[#f7f7f7] shadow-md z-50">
+      <div
+        class="container mx-auto px-5 md:px-20 py-3 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="media/logo.jpeg"
+              alt="Elon Team Blog"
+              class="w-1/6 md:w-1/4 logo-tint"
+            />
+          </a>
+        </div>
+
+        <!-- Hamburger Icon -->
+        <button
+          id="menu"
+          class="md:hidden text-gray-700 focus:outline-none w-6 h-6"
+        >
+          <i class="bx bx-menu block text-2xl"></i>
+          <i class="bx bx-x hidden text-2xl"></i>
+        </button>
+
+        <!-- Desktop Menu -->
+        <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
+          <li>
+            <a
+              href="index.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="blog.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="create.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a] member"
+              >Manage Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <div id="myBtn" class="hidden md:flex space-x-4">
+          <a
+            href="login.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser"
+            >Login</a
+          >
+          <a
+            href="registration.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser"
+            >Get Started</a
+          >
+          <a
+            href="login.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user"
+            >Logout</a
+          >
+        </div>
+      </div>
+
+      <!-- Mobile Menu Container -->
+      <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col">
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="index.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="blog.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="create.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a] member"
+              >Manage Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <div class="pt-4 space-y-2">
+          <a
+            href="login.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser"
+            >Login</a
+          >
+          <a
+            href="registration.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser"
+            >Get Started</a
+          >
+          <a
+            href="login.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user"
+            >Logout</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 md:pt-24 flex-1">
+      <div class="flex flex-col items-center">
+        <div
+          class="flex flex-col md:flex-row items-center md:items-start justify-between my-6 md:my-0 mx-5 md:mx-20 w-full"
+        >
+          <!-- Blog Post Creation Form -->
+          <div class="flex flex-col p-0 m-0 w-full md:w-3/4">
+            <h2 class="text-xl font-semibold text-gray-700 px-6 mb-4">
+              Create Blog Post
+            </h2>
+            <form
+              id="createPostForm"
+              class="bg-white shadow-md rounded p-6 space-y-4"
+            >
+              <input
+                id="title"
+                type="text"
+                placeholder="Title"
+                class="w-full border px-4 py-2 rounded"
+                required
+              />
+              <textarea
+                id="content"
+                placeholder="Content"
+                class="w-full border px-4 py-2 rounded"
+                rows="6"
+                required
+              ></textarea>
+              <select
+                id="category_id"
+                name="category"
+                class="w-full border px-4 py-2 rounded"
+                required
+              >
+                <option value="" disabled selected>Choose Category</option>
+              </select>
+              <input
+                id="image"
+                type="file"
+                class="w-full border px-4 py-2 rounded"
+                accept="image/*"
+              />
+              <button
+                type="submit"
+                class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+              >
+                Create Post
+              </button>
+              <p id="responseMessage" class="text-sm font-medium"></p>
+            </form>
+          </div>
+
+          <!-- Right Column Navigation -->
+          <div class="w-full md:w-1/4 md:mt-10">
+            <!-- <div
+              class="ml-0 md:ml-4 max-w-2xl mx-auto px-4 bg-[#00fffc] border-1 border-[#0c4c8a] rounded-md"
+            >
+              <h2
+                class="font-bold text-[#124386] text-center text-2xl py-2 px-4 rounded-lg"
+              >
+                Categories
+              </h2>
+              <select
+                name="category"
+                id="category_id_display"
+                class="mt-2 w-full text-gray-800 font-semibold block border-1 border-gray-600 rounded-md px-4 py-2 mb-3"
+              >
+              </select>
+              <div class="flex justify-center items-center">
+                <button
+                  class="px-6 py-2 mb-4 text-center font-semibold text-white bg-[#0c4c8a] rounded-md"
+                >
+                  View
+                </button>
+              </div>
+            </div> -->
+
+            <div class="pb-1 pl-0 md:pl-4 pt-2 w-full text-2xl font-normal">
+              Manage Blog
+            </div>
+            <div class="pl-0 md:pl-4">
+              <div class="flex flex-col gap-2">
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                  <a href="create.html" target="_self" class="flex items-center">
+                    <img
+                      src="media/create-icon.png"
+                      alt="Create Post Image"
+                      class="w-16 h-16 border-2 border-[#213a81] rounded-lg object-cover"
+                    />
+                    <div class="p-3 flex-1">
+                      <h3
+                        class="text-base font-semibold text-gray-800 line-clamp-3"
+                      >
+                        Create: Initiate a new post
+                      </h3>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                  <a href="create.html" target="_self" class="flex items-center">
+                    <img
+                      src="media/patch-icon.png"
+                      alt="Patch Post Image"
+                      class="w-16 h-16 object-cover border-2 border-[#213a81] rounded-lg"
+                    />
+                    <div class="p-3 flex-1">
+                      <h3
+                        class="text-base font-semibold text-gray-800 line-clamp-3"
+                      >
+                        Patch: Partially update a post
+                      </h3>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                  <a href="create.html" target="_self" class="flex items-center">
+                    <img
+                      src="media/put-icon.png"
+                      alt="Put/Replace Post Image"
+                      class="w-16 h-16 object-cover border-2 border-[#213a81] rounded-lg"
+                    />
+                    <div class="p-3 flex-1">
+                      <h3
+                        class="text-base font-semibold text-gray-800 line-clamp-3"
+                      >
+                        Put: Replace a post
+                      </h3>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                  <a href="create.html" target="_self" class="flex items-center">
+                    <img
+                      src="media/delete-icon.png"
+                      alt="Delete Post Image"
+                      class="w-16 h-16 object-cover border-2 border-[#213a81] rounded-lg"
+                    />
+                    <div class="p-3 flex-1">
+                      <h3
+                        class="text-base font-semibold text-gray-800 line-clamp-3"
+                      >
+                        Delete: Remove a post
+                      </h3>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                  <a href="create.html" target="_self" class="flex items-center">
+                    <img
+                      src="media/get-icon.png"
+                      alt="Get Post Image"
+                      class="w-16 h-16 object-cover border-2 border-[#213a81] rounded-lg"
+                    />
+                    <div class="p-3 flex-1">
+                      <h3
+                        class="text-base font-semibold text-gray-800 line-clamp-3"
+                      >
+                        Get: Fetch post(s)
+                      </h3>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0c4c8a] hover:bg-[#1f3750] py-3">
+      <div class="text-white text-center">
+        <span
+          >© Blockfuse Labs, The Elon Team, Cohort 2 Web2 Beginners,
+          2025.</span
+        >
+        <p>
+          <a
+            href="https://github.com/dgplang/elons-blog-project"
+            target="_blank"
+            class="hover:underline text-white"
+            >GitHub Link</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+    // Fetch Categories for Form
+    const fetchCategories = (url, selectElement, defaultText = "Choose Category") => {
+      if (!selectElement) {
+        console.error(`Error: selectElement is null. Check if the element with ID '${selectElement?.id || "unknown"}' exists in the DOM.`);
+        return;
+      }
+
+      let allCategories = [];
+
+      const getPage = (pageUrl) => {
+        fetch(pageUrl, {
+          method: "GET",
+          headers: {
+            Accept: "*/*",
+          },
+        })
+          .then((res) => {
+            if (!res.ok) throw new Error(`Network response was not ok: ${res.status}`);
+            return res.json();
+          })
+          .then((data) => {
+            console.log("Categories API response:", data); // Debug log
+            allCategories = allCategories.concat(data.data || []);
+            if (data.next_page_url) {
+              getPage(data.next_page_url);
+            } else {
+              const chooseOption = document.createElement("option");
+              chooseOption.value = "";
+              chooseOption.disabled = true;
+              chooseOption.selected = true;
+              chooseOption.textContent = defaultText;
+              selectElement.appendChild(chooseOption);
+
+              allCategories.forEach((category) => {
+                const option = document.createElement("option");
+                option.value = category.id;
+                option.textContent = category.name;
+                selectElement.appendChild(option);
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching categories:", error.message);
+            const errorOption = document.createElement("option");
+            errorOption.disabled = true;
+            errorOption.textContent = "❌ Failed to load categories";
+            selectElement.appendChild(errorOption);
+          });
+      };
+
+      getPage(url);
+    };
+
+    // Single DOMContentLoaded listener
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize category dropdown
+      const formCategorySelect = document.getElementById("category_id");
+      if (!formCategorySelect) {
+        console.error("Error: Element with ID 'category_id' not found.");
+        return;
+      }
+
+      fetchCategories("https://test.blockfuselabs.com/api/categories", formCategorySelect, "Choose Category");
+
+      // Form Submission
+      const form = document.getElementById("createPostForm");
+      const responseMessage = document.getElementById("responseMessage");
+
+      if (!form) {
+        console.error("Form with ID 'createPostForm' not found.");
+        return;
+      }
+
+      if (!responseMessage) {
+        console.error("Element with ID 'responseMessage' not found.");
+        return;
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent page reload
+
+        // Retrieve user data from localStorage
+        const userData = localStorage.getItem("loggedInEmail");
+        if (!userData) {
+          responseMessage.textContent = "❌ User not logged in.";
+          responseMessage.className = "text-red-600";
+          return;
+        }
+
+        const user = JSON.parse(localStorage.getItem(userData));
+        if (!user || !user.token) {
+          responseMessage.textContent = "❌ User session is invalid or expired.";
+          responseMessage.className = "text-red-600";
+          return;
+        }
+
+        // Log user token for debugging
+        console.log("User token:", user.token);
+
+        // Get form input values
+        const title = document.getElementById("title")?.value.trim();
+        const content = document.getElementById("content")?.value.trim();
+        const category_id = document.getElementById("category_id")?.value;
+        const featured_image = document.getElementById("image")?.files[0];
+
+        // Validate required fields
+        if (!title || !content) {
+          responseMessage.textContent = "❌ Title and content are required.";
+          responseMessage.className = "text-red-600";
+          return;
+        }
+
+        // Create FormData object
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("content", content);
+        if (category_id) {
+          formData.append("category_id", category_id);
+        }
+        if (featured_image) {
+          formData.append("featured_image", featured_image);
+        }
+
+        // Log FormData for debugging
+        for (let [key, value] of formData.entries()) {
+          console.log(`FormData ${key}: ${value}`);
+        }
+
+        fetch("https://test.blockfuselabs.com/api/posts", {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+            Authorization: `Bearer ${user.token}`,
+          },
+          body: formData,
+        })
+          .then((response) => {
+            console.log("Post API response status:", response.status); // Debug log
+            if (!response.ok) {
+              return response.text().then((text) => {
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${text}`);
+              });
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Post API response data:", data); // Debug log
+            responseMessage.className = "text-green-600";
+            responseMessage.textContent = "✅ Post created successfully!";
+            localStorage.setItem(`post_${data.id}`, JSON.stringify(data));
+            form.reset();
+          })
+          .catch((error) => {
+            console.error("Error creating post:", error.message);
+            responseMessage.className = "text-red-600";
+            if (error.message.includes("500")) {
+              responseMessage.textContent = "❌ Server Error: Unable to create post. Please try again later or contact support.";
+            } else if (error.message.includes("401")) {
+              responseMessage.textContent = "❌ Authentication failed. Please log in again.";
+            } else {
+              responseMessage.textContent = `❌ Failed to create post: ${error.message || "Unknown error"}`;
+            }
+          });
+      });
+    });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
