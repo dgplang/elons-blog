@@ -320,7 +320,39 @@
 
     window.onload = () => {
         displayStoredPosts();
-    };
+    }
+
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Step 1: Get the logged-in email
+        const email = localStorage.getItem("loggedInEmail");
+
+        if (email) {
+        // Step 2: Get the user object from localStorage
+        const userData = localStorage.getItem(email);
+
+        if (userData) {
+            const user = JSON.parse(userData);
+
+            // Step 3: Update isLog to false
+            user.isLog = false;
+
+            // Step 4: Save the updated user back to localStorage
+            localStorage.setItem(email, JSON.stringify(user));
+
+            // Optional: remove loggedInEmail
+            localStorage.removeItem("loggedInEmail");
+
+            // Step 5: Redirect after a short delay
+            setTimeout(() => {
+            window.location.href = "index.html";
+            }, 2000); // 2 seconds
+        }
+        }
+    });
 </script>
 </body>
 </html>
