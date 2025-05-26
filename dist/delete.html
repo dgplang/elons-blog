@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Blog Posts - Elon Team's Blog</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
+    <style>
+      .skeleton { background-color: #e5e7eb; border-radius: 4px; }
+      .pulse { animation: pulse 1.5s infinite ease-in-out; }
+      .no-posts { color: #374151; text-align: center; font-size: 1rem; margin: 10px 0; }
+      .error { color: red; text-align: center; font-size: 1rem; margin: 10px 0; }
+      @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+      }
+    </style>
+  </head>
+  <body class="m-0 p-0 box-border bg-gray-100 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-[#f7f7f7] shadow-md z-50">
+      <div
+        class="container mx-auto px-5 md:px-20 py-3 flex items-center justify-between"
+      >
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="media/logo.jpeg"
+              alt="Elon Team Blog"
+              class="w-1/6 md:w-1/4 logo-tint"
+            />
+          </a>
+        </div>
+        <button
+          id="menu"
+          class="md:hidden text-gray-700 focus:outline-none w-6 h-6"
+        >
+          <i class="bx bx-menu block text-2xl"></i>
+          <i class="bx bx-x hidden text-2xl"></i>
+        </button>
+        <ul id="nav-links" class="hidden md:flex space-x-6 items-center">
+          <li>
+            <a
+              href="index.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="create.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a] member"
+              >Manage Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <div id="myBtn" class="hidden md:flex space-x-4">
+          <a
+            href="login.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser"
+            >Login</a
+          >
+          <a
+            href="registration.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser"
+            >Get Started</a
+          >
+          <a
+            href="login.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user"
+            >Logout</a
+          >
+        </div>
+      </div>
+      <div id="mobileMenu" class="md:hidden px-4 pb-4 hidden flex-col">
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="index.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="blog.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="create.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a] member"
+              >Manage Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="text-[#0c4c8a] hover:text-[#1f3750] hover:border-b-2 border-[#0c4c8a]"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <div class="pt-4 space-y-2">
+          <a
+            href="login.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser"
+            >Login</a
+          >
+          <a
+            href="registration.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md nonuser"
+            >Get Started</a
+          >
+          <a
+            href="login.html"
+            class="px-4 py-2 bg-[#0c4c8a] hover:bg-[#1f3750] text-white rounded-md user"
+            >Logout</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 md:pt-24 flex-1">
+      <div class="flex flex-col items-center">
+        <div
+          class="flex flex-col md:flex-row items-center md:items-start justify-between my-6 md:my-0 mx-5 md:mx-20 w-full"
+        >
+          <!-- User Posts List -->
+          <div class="flex flex-col p-0 m-0 w-full md:w-3/4">
+            <h2 class="text-xl font-semibold text-gray-700 px-6 mb-4">
+              My Blog Posts
+            </h2>
+            <div id="userPostsContainer" class="bg-white shadow-md rounded p-6">
+              <!-- Skeleton Loaders -->
+              <div class="space-y-2">
+                <div class="skeleton pulse h-10 w-full"></div>
+                <div class="skeleton pulse h-10 w-full"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column Navigation -->
+          <div class="w-full md:w-1/4 md:mt-10">
+            <div class="pb-1 pl-0 md:pl-4 pt-2 w-full text-2xl font-normal">
+              Manage Blog
+            </div>
+            <div class="pl-0 md:pl-4">
+              <div class="flex flex-col gap-2">
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                  <a href="create.html" target="_self" class="flex items-center">
+                    <img
+                      src="media/create-icon.png"
+                      alt="Create Post Image"
+                      class="w-16 h-16 border-2 border-[#213a81] rounded-lg object-cover"
+                    />
+                    <div class="p-3 flex-1">
+                      <h3
+                        class="text-base font-semibold text-gray-800 line-clamp-3"
+                      >
+                        Create: Initiate a new post
+                      </h3>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                  <a href="create.html" target="_self" class="flex items-center">
+                    <img
+                      src="media/delete-icon.png"
+                      alt="Delete Post Image"
+                      class="w-16 h-16 object-cover border-2 border-[#213a81] rounded-lg"
+                    />
+                    <div class="p-3 flex-1">
+                      <h3
+                        class="text-base font-semibold text-gray-800 line-clamp-3"
+                      >
+                        Delete: Remove a post
+                      </h3>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="w-full leading-relaxed hover:underline flex items-center"
+                >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0c4c8a] hover:bg-[#1f3750] py-3">
+      <div class="text-white text-center">
+        <span
+          >© Blockfuse Labs, The Elon Team, Cohort 2 Web2 Beginners,
+          2025.</span
+        >
+        <p>
+          <a
+            href="https://github.com/dgplang/elons-blog-project"
+            target="_blank"
+            class="hover:underline text-white"
+            >GitHub Link</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Fetch Categories (retained for potential future use)
+      const fetchCategories = (url, selectElement, defaultText = "Choose Category") => {
+        if (!selectElement) {
+          console.error(`Error: selectElement is null. Check if the element exists.`);
+          return;
+        }
+
+        let allCategories = [];
+
+        const getPage = (pageUrl) => {
+          fetch(pageUrl, {
+            method: "GET",
+            headers: { Accept: "*/*" }
+          })
+            .then((res) => {
+              if (!res.ok) throw new Error(`Network response was not ok: ${res.status}`);
+              return res.json();
+            })
+            .then((data) => {
+              allCategories = allCategories.concat(data.data || []);
+              if (data.next_page_url) {
+                getPage(data.next_page_url);
+              } else {
+                const chooseOption = document.createElement("option");
+                chooseOption.value = "";
+                chooseOption.disabled = true;
+                chooseOption.selected = true;
+                chooseOption.textContent = defaultText;
+                selectElement.appendChild(chooseOption);
+
+                allCategories.forEach((category) => {
+                  const option = document.createElement("option");
+                  option.value = category.id;
+                  option.textContent = category.name;
+                  selectElement.appendChild(option);
+                });
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching categories:", error.message);
+              const errorOption = document.createElement("option");
+              errorOption.disabled = true;
+              errorOption.textContent = "❌ Failed to load categories";
+              selectElement.appendChild(errorOption);
+            });
+        };
+
+        getPage(url);
+      };
+
+      // Fetch and Display User's Posts
+      const fetchUserPosts = () => {
+        const userPostsContainer = document.getElementById("userPostsContainer");
+        if (!userPostsContainer) {
+          console.error("Error: Element with ID 'userPostsContainer' not found.");
+          return;
+        }
+
+        // Check user authentication
+        const userData = localStorage.getItem("loggedInEmail");
+        if (!userData) {
+          userPostsContainer.innerHTML = '<p class="error">Please log in to view your posts.</p>';
+          return;
+        }
+
+        const user = JSON.parse(localStorage.getItem(userData));
+        if (!user || !user.email || !user.token) {
+          userPostsContainer.innerHTML = '<p class="error">Invalid user session. Please log in again.</p>';
+          return;
+        }
+
+        // Show skeleton loaders
+        userPostsContainer.innerHTML = `
+          <div class="space-y-2">
+            <div class="skeleton pulse h-10 w-full"></div>
+            <div class="skeleton pulse h-10 w-full"></div>
+          </div>
+        `;
+
+        let allPosts = [];
+        const fetchPage = (url) => {
+          fetch(url, {
+            method: "GET",
+            headers: {
+              Accept: "*/*",
+              Authorization: `Bearer ${user.token}`
+            }
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log("Posts API response:", data);
+              allPosts = allPosts.concat(data.data || []);
+              if (data.next_page_url) {
+                fetchPage(data.next_page_url);
+              } else {
+                const posts = allPosts
+                  .filter(post => 
+                    post.user?.email === user.email && 
+                    post.user?.team_name === "Elon"
+                  )
+                  .map((post, index) => ({
+                    serial: index + 1,
+                    id: post.id,
+                    title: post.title,
+                    category: post.category?.name || "Unknown"
+                  }));
+
+                console.log("Filtered user posts:", posts);
+
+                userPostsContainer.innerHTML = "";
+                if (posts.length === 0) {
+                  userPostsContainer.innerHTML = '<p class="no-posts">No posts found.</p>';
+                  return;
+                }
+
+                // Create table
+                const table = document.createElement("table");
+                table.className = "w-full text-left border-collapse";
+                table.innerHTML = `
+                  <thead>
+                    <tr class="bg-gray-200">
+                      <th class="p-2 text-gray-700 font-semibold">S/N</th>
+                      <th class="p-2 text-gray-700 font-semibold">Title</th>
+                      <th class="p-2 text-gray-700 font-semibold">Category</th>
+                      <th class="p-2 text-gray-700 font-semibold">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="postsTableBody"></tbody>
+                `;
+                userPostsContainer.appendChild(table);
+
+                const tbody = table.querySelector("#postsTableBody");
+                posts.forEach((post) => {
+                  const row = document.createElement("tr");
+                  row.className = "border-t";
+                  row.innerHTML = `
+                    <td class="p-2 text-gray-800">${post.serial}</td>
+                    <td class="p-2 text-gray-800">${DOMPurify.sanitize(post.title)}</td>
+                    <td class="p-2 text-gray-800">${DOMPurify.sanitize(post.category)}</td>
+                    <td class="p-2">
+                      <button
+                        class="delete-post-btn bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+                        data-post-id="${post.id}"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  `;
+                  tbody.appendChild(row);
+                });
+
+                // Add delete event listeners
+                document.querySelectorAll(".delete-post-btn").forEach((button) => {
+                  button.addEventListener("click", () => {
+                    const postId = button.getAttribute("data-post-id");
+                    if (confirm("Are you sure you want to delete this post?")) {
+                      deletePost(postId, button.closest("tr"));
+                    }
+                  });
+                });
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching posts:", error);
+              userPostsContainer.innerHTML = `<p class="error">Failed to load posts: ${error.message}</p>`;
+            });
+        };
+
+        fetchPage("https://test.blockfuselabs.com/api/posts");
+      };
+
+      // Delete Post
+      const deletePost = (postId, rowElement) => {
+        const userData = localStorage.getItem("loggedInEmail");
+        if (!userData) {
+          alert("Please log in to delete posts.");
+          return;
+        }
+
+        const user = JSON.parse(localStorage.getItem(userData));
+        if (!user || !user.token) {
+          alert("Invalid user session. Please log in again.");
+          return;
+        }
+
+        fetch(`https://test.blockfuselabs.com/api/posts/${postId}`, {
+          method: "DELETE",
+          headers: {
+            Accept: "*/*",
+            Authorization: `Bearer ${user.token}`
+          }
+        })
+          .then((response) => {
+            return response.text().then((text) => {
+              console.log(`Delete response: Status ${response.status}, Text: ${text}`);
+              if (response.status === 200 && text.includes("Post deleted")) {
+                return { success: true };
+              } else if (response.status === 403 && text.includes("Unauthorized to delete this post")) {
+                throw new Error("Unauthorized to delete this post");
+              } else if (response.status === 500 && text.includes("Error")) {
+                throw new Error("Server error occurred while deleting the post");
+              } else {
+                throw new Error(`Unexpected response: ${text}`);
+              }
+            });
+          })
+          .then(() => {
+            rowElement.remove();
+            const tbody = document.querySelector("#postsTableBody");
+            if (tbody.children.length === 0) {
+              document.getElementById("userPostsContainer").innerHTML = '<p class="no-posts">No posts found.</p>';
+            } else {
+              // Update serial numbers
+              Array.from(tbody.children).forEach((row, index) => {
+                row.cells[0].textContent = index + 1;
+              });
+            }
+            alert("Post deleted successfully!");
+          })
+          .catch((error) => {
+            console.error("Error deleting post:", error.message);
+            alert(`Failed to delete post: ${error.message}`);
+          });
+      };
+
+      // Initialize on DOMContentLoaded
+      document.addEventListener("DOMContentLoaded", () => {
+        fetchUserPosts();
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
