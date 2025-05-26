@@ -167,7 +167,7 @@
                 mainContainer.innerHTML = '';
 
                 allCategories.forEach(function (category) {
-                    const categoryPosts = postsByCategory[category]; // Remove slice(0, 2) to show all posts
+                    const categoryPosts = postsByCategory[category];
                     if (categoryPosts.length === 0) {
                         return;
                     }
@@ -183,7 +183,8 @@
                     const cardsContainer = document.createElement('div');
                     cardsContainer.className = 'grid grid-cols-1 md:grid-cols-2 gap-8 py-10 max-w-7xl mx-auto';
 
-                    categoryPosts.forEach(function (post) {
+                    // Limit to two posts per category
+                    categoryPosts.slice(0, 2).forEach(function (post) {
                         const cardLink = document.createElement('a');
                         cardLink.href = targetPage + '?id=' + post.id;
                         cardLink.className = 'block no-underline text-inherit relative group hover:scale-105 transition-transform duration-300';
