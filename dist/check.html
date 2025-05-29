@@ -1,0 +1,29 @@
+<script>
+    function loadComments(postId) {
+    const commentsContainer = document.getElementById('commentsContainer');
+
+    fetch(`https://test.blockfuselabs.com/api/posts/${postId}/comments`, {
+        method: 'GET',
+        headers: { 'Accept': '*/*' }
+    })
+    .then(response => response.json())
+    .then(comments => {
+        commentsContainer.innerHTML = '';
+        if (comments.length === 0) {
+            commentsContainer.innerHTML = '<p class="text-white">No comments yet.</p>';
+            return;
+        }
+        comments.forEach(comment => {
+            const commentBlock = document.createElement('div');
+            commentBlock.className = 'p-4 bg-white rounded-md shadow-sm animate-comment';
+            const time = new Date(comment.created_at).toLocaleString('en-US', {
+                dateStyle: 'medium',
+                timeStyle: 'short'
+            });
+            commentBlock.innerHTML = `
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm sm:text-base font-medium text-[#26355b]">${capitalizeWords(comment.user?.name || 'Anonymous')}</h3>
+                    <span class="text-xs sm:text-sm text-gray-500">${time}</span>
+                </div>
+                <p class="text-sm sm:text-base text-[#26355b] text-justify leading
+</script>
